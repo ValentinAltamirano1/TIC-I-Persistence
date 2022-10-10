@@ -10,6 +10,7 @@ import java.util.List;
 @RequestMapping(path="api/v1/gimnasio/centroDeportivo")
 public class CentrosDeportivosController {
 
+    
     private final CentrosDeportivosService centrosDeportivosService;
 
     @Autowired
@@ -20,7 +21,6 @@ public class CentrosDeportivosController {
     @GetMapping
     public List<CentrosDeportivos> getCentroDeportivo(){
         return centrosDeportivosService.getCentroDeportivo();
-
     }
 
     @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
