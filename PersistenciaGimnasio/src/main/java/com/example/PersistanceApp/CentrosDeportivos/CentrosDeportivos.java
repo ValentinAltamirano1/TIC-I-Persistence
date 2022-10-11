@@ -67,9 +67,9 @@ public class CentrosDeportivos {
 
     @Override
     public String toString() {
-        return "Centro Deportivo{" +
+        return "CentrosDeportivos{" +
                 "rut=" + rut +
-                "telefono=" + telefono +
+                ", telefono=" + telefono +
                 ", nombre='" + nombre + '\'' +
                 ", direccion='" + direccion + '\'' +
                 '}';

@@ -21,14 +21,24 @@ public class Usuarios {
     @Column(name = "contraseña", nullable = false , unique = true)
     private String contraseña;
 
+    @Column(name = "tipoUsuario", nullable = false )
+    private String tipoUsuario;
     public Usuarios() {
     }
 
-    public Usuarios(String mail, String contraseña) {
+    public Usuarios(String mail, String contraseña, String tipoUsuario) {
         this.mail = mail;
         this.contraseña = contraseña;
+        this.tipoUsuario = tipoUsuario;
     }
 
+    public String getTipoUsuario() {
+        return tipoUsuario;
+    }
+
+    public void setTipoUsuario(String tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
 
     public String getMail() {return mail;}
 
@@ -40,9 +50,10 @@ public class Usuarios {
 
     @Override
     public String toString() {
-        return "Centro Deportivo{" +
-                "mail=" + mail +
-                "contraseña=" + contraseña +
+        return "Usuarios{" +
+                "mail='" + mail + '\'' +
+                ", contraseña='" + contraseña + '\'' +
+                ", tipoUsuario='" + tipoUsuario + '\'' +
                 '}';
     }
 }

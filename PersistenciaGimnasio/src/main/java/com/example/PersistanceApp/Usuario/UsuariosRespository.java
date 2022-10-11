@@ -10,6 +10,8 @@ import java.util.Optional;
 
 @Repository
 public interface UsuariosRespository extends JpaRepository<Usuarios,String> {
-    @Query("SELECT d FROM Usuarios d WHERE d.mail = ?1")
+    @Query("SELECT m FROM Usuarios m WHERE m.mail = ?1")
     Optional<Usuarios> findUsuariosByMail(String mail);
+
+
 }
