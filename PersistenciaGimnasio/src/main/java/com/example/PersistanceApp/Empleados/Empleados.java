@@ -14,24 +14,25 @@ public class Empleados {
 
     @Column(name = "nombre")
     private String nombre;
-
+    @Column(name = "telefono")
+    private int telefono;
     @Column(name = "mail")
     private String mail;
 
-    @Column(name = "telefono")
-    private int telefono;
-
+    @Column(name = "contraseña")
+    private String contraseña;
     @Column(name = "tipo")
     private String tipo;
 
     public Empleados() {
     }
 
-    public Empleados(String pasaporte, String nombre, String mail, int telefono, String tipo) {
+    public Empleados(String pasaporte, String nombre, int telefono, String mail, String contraseña, String tipo) {
         this.pasaporte = pasaporte;
         this.nombre = nombre;
-        this.mail = mail;
         this.telefono = telefono;
+        this.mail = mail;
+        this.contraseña = contraseña;
         this.tipo = tipo;
     }
 
@@ -73,6 +74,14 @@ public class Empleados {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     @Override

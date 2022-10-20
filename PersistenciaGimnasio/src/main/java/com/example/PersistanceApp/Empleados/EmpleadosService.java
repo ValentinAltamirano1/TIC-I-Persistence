@@ -2,6 +2,8 @@ package com.example.PersistanceApp.Empleados;
 
 import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivos;
 import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivosRepository;
+import com.example.PersistanceApp.Usuario.Usuarios;
+import com.example.PersistanceApp.Usuario.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +12,13 @@ import java.util.Optional;
 
 @Service
 public class EmpleadosService {
-    private final EmpleadosRepository empleadosRepository;
+    private EmpleadosRepository empleadosRepository;
+
+    private UsuariosService usuariosService;
+    @Autowired
+    public EmpleadosService(UsuariosService usuariosService) {
+        this.usuariosService = usuariosService;
+    }
 
     @Autowired
     public EmpleadosService (EmpleadosRepository empleadosRepository) {
@@ -22,6 +30,7 @@ public class EmpleadosService {
 
     public void addNewEmpleado(Empleados empleados) {
         Optional<Empleados> empleadoByPasaporte = empleadosRepository.findEmpleadoByPasaporte(empleados.getPasaporte());
+        Usuarios usuario = new Usuarios(empleados.getMail(),empleados.getContraseña(),empleados.getTipo());
         if(empleadoByPasaporte.isPresent()){
             try {
                 throw new IllegalAccessException("Centro Deportivo ingresado");
@@ -29,6 +38,10 @@ public class EmpleadosService {
 
             }
         }
+        usuariosService.addNewUsuario(usuario);
         empleadosRepository.save(empleados);
     }
+
+
+
 }
