@@ -21,7 +21,6 @@ public class ActividadesService {
     }
 
     public void addNewActividades(Actividades actividades) {
-        System.out.println(actividades);
         Optional<Actividades> actividadesById = actividadesRepository.findActividadesByNombre(actividades.getNombre());
         if(actividadesById.isPresent()){
             try {
