@@ -6,16 +6,6 @@ import javax.persistence.*;
 @Table
 public class Empresas {
     @Id
-    @SequenceGenerator(
-            name="centrosDeportivos_sequence",
-            sequenceName="centrosDeportivos_sequence",
-            allocationSize = 1)
-
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "centrosDeportivos_sequence"
-    )
-
     @Column(name = "rut", updatable = false)
     private Long rut;
     @Column(name = "nombre", nullable = false , columnDefinition = "TEXT")
