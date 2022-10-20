@@ -8,23 +8,12 @@ import java.util.Date;
 @Table
 public class Actividades {
     @Id
-    @SequenceGenerator(
-            name="actividades_sequence",
-            sequenceName="actividades_sequence",
-            allocationSize = 1)
-
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "activiades_sequence"
-    )
-
     @Column(name = "nombre", updatable = false)
     private String nombre;
     @Column(name = "horario",nullable = false )
-    private Date horario;
+    private String horario;
     @Column(name = "precio" ,nullable = false)
     private int precio;
-
     @Column(name = "categoria" ,nullable = false )
     private String categoria;
     @Column(name = "capacidad" , nullable = false)
@@ -35,7 +24,7 @@ public class Actividades {
     public Actividades() {
     }
 
-    public Actividades(String nombre, Date horario, int precio, String categoria, int capacidad) {
+    public Actividades(String nombre, String horario, int precio, String categoria, int capacidad) {
         this.nombre = nombre;
         this.horario = horario;
         this.precio = precio;
@@ -51,12 +40,10 @@ public class Actividades {
         this.nombre = nombre;
     }
 
-    public Date getHorario() {
-        return horario;
+    public String getHorario() {return horario;
     }
 
-    public void setHorario(Date horario) {
-        this.horario = horario;
+    public void setHorario(String horario) {this.horario = horario;
     }
 
     public int getPrecio() {
