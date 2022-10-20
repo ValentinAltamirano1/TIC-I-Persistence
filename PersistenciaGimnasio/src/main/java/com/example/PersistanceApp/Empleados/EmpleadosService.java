@@ -1,7 +1,5 @@
 package com.example.PersistanceApp.Empleados;
 
-import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivos;
-import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivosRepository;
 import com.example.PersistanceApp.Usuario.Usuarios;
 import com.example.PersistanceApp.Usuario.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,7 @@ public class EmpleadosService {
     private EmpleadosRepository empleadosRepository;
 
     private UsuariosService usuariosService;
-    @Autowired
+
     public EmpleadosService(UsuariosService usuariosService) {
         this.usuariosService = usuariosService;
     }

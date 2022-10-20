@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table
@@ -21,18 +23,22 @@ public class Empleados {
 
     @Column(name = "contraseña")
     private String contraseña;
+
+    @Column(name = "fichaMedica")
+    private LocalDate fichaMedica;
     @Column(name = "tipo")
     private String tipo;
 
     public Empleados() {
     }
 
-    public Empleados(String pasaporte, String nombre, int telefono, String mail, String contraseña, String tipo) {
+    public Empleados(String pasaporte, String nombre, int telefono, String mail, String contraseña, LocalDate fichaMedica, String tipo) {
         this.pasaporte = pasaporte;
         this.nombre = nombre;
         this.telefono = telefono;
         this.mail = mail;
         this.contraseña = contraseña;
+        this.fichaMedica = fichaMedica;
         this.tipo = tipo;
     }
 
@@ -84,13 +90,23 @@ public class Empleados {
         this.contraseña = contraseña;
     }
 
+    public LocalDate getFichaMedica() {
+        return fichaMedica;
+    }
+
+    public void setFichaMedica(LocalDate fichaMedica) {
+        this.fichaMedica = fichaMedica;
+    }
+
     @Override
     public String toString() {
         return "Empleados{" +
                 "pasaporte='" + pasaporte + '\'' +
                 ", nombre='" + nombre + '\'' +
-                ", mail='" + mail + '\'' +
                 ", telefono=" + telefono +
+                ", mail='" + mail + '\'' +
+                ", contraseña='" + contraseña + '\'' +
+                ", fichaMedica=" + fichaMedica +
                 ", tipo='" + tipo + '\'' +
                 '}';
     }
