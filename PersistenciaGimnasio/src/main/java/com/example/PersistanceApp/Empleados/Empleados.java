@@ -1,17 +1,25 @@
 package com.example.PersistanceApp.Empleados;
 
+import com.example.PersistanceApp.Actividades.Actividades;
 import com.example.PersistanceApp.Empresas.Empresas;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table
 public class Empleados {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id_empleado")
+    private int id_empleado;
     @Column(name = "pasaporte")
     private String pasaporte;
+
+    @ManyToMany(mappedBy = "empleados")
+    private Set<Actividades>actividades;
 
 
     @ManyToOne
