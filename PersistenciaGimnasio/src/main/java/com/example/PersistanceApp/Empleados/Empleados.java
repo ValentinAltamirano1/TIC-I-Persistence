@@ -1,9 +1,8 @@
 package com.example.PersistanceApp.Empleados;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.example.PersistanceApp.Empresas.Empresas;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -13,6 +12,11 @@ public class Empleados {
     @Id
     @Column(name = "pasaporte")
     private String pasaporte;
+
+
+    @ManyToOne
+    @JoinColumn(name = "id_empresa", insertable = false,updatable = false)
+    Empresas empresas; // muchos empleados pueden pertenecer a una misma empresa
 
     @Column(name = "nombre")
     private String nombre;

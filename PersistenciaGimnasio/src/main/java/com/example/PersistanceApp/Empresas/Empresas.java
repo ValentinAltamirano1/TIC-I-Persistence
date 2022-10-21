@@ -1,11 +1,23 @@
 package com.example.PersistanceApp.Empresas;
 
+import com.example.PersistanceApp.Empleados.Empleados;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table
 public class Empresas {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id_empresa")
+    private int id_empresa;
+
+
+    @OneToMany
+    @JoinColumn(name = "id_empresa")
+    private Set<Empleados> empleados;
     @Column(name = "rut", updatable = false)
     private Long rut;
     @Column(name = "nombre", nullable = false , columnDefinition = "TEXT")

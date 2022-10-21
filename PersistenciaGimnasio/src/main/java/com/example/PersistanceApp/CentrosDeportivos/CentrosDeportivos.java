@@ -1,11 +1,23 @@
 package com.example.PersistanceApp.CentrosDeportivos;
 
+import com.example.PersistanceApp.Empleados.Empleados;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity (name="CentrosDeportivos")
 @Table
 public class CentrosDeportivos {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id_centrodep")
+    private int id_centrodep;
+
+
+    @OneToMany
+    @JoinColumn(name = "id_centrodep")
+    private Set<CentrosDeportivos> centrosDeportivos;
     @Column(name = "rut", updatable = false)
     private Long rut;
     @Column(name = "telefono", nullable = false , unique = true)

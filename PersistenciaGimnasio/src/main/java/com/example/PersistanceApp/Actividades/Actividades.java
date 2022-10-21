@@ -1,6 +1,9 @@
 package com.example.PersistanceApp.Actividades;
 
 
+import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivos;
+import com.example.PersistanceApp.Empresas.Empresas;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,6 +13,10 @@ public class Actividades {
     @Id
     @Column(name = "nombre", updatable = false)
     private String nombre;
+
+    @ManyToOne
+    @JoinColumn(name = "id_centrodep", insertable = false,updatable = false)
+    CentrosDeportivos centrosDeportivos; // muchos actividades pueden pertenecer a un mismo centro deportivo
     @Column(name = "horario",nullable = false )
     private String horario;
     @Column(name = "precio" ,nullable = false)
