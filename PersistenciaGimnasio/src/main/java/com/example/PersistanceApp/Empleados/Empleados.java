@@ -1,30 +1,24 @@
 package com.example.PersistanceApp.Empleados;
 
-import com.example.PersistanceApp.Actividades.Actividades;
-import com.example.PersistanceApp.Empresas.Empresas;
-
-import javax.persistence.*;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table
 public class Empleados {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id_empleado")
-    private int id_empleado;
-    @Column(name = "pasaporte")
-    private String pasaporte;
-
-    @ManyToMany(mappedBy = "empleados")
+    /*@ManyToMany(mappedBy = "empleados")
     private Set<Actividades>actividades;
 
 
     @ManyToOne
     @JoinColumn(name = "id_empresa", insertable = false,updatable = false)
-    Empresas empresas; // muchos empleados pueden pertenecer a una misma empresa
+    Empresas empresas; // muchos empleados pueden pertenecer a una misma empresa*/
+
+    @Id
+    @Column(name = "pasaporte")
+    private String pasaporte;
 
     @Column(name = "nombre")
     private String nombre;
@@ -36,21 +30,21 @@ public class Empleados {
     @Column(name = "contraseña")
     private String contraseña;
 
-    @Column(name = "fichaMedica")
-    private LocalDate fichaMedica;
+    @Column(name = "ficha_medica")
+    private String ficha_medica;
     @Column(name = "tipo")
     private String tipo;
 
     public Empleados() {
     }
 
-    public Empleados(String pasaporte, String nombre, int telefono, String mail, String contraseña, LocalDate fichaMedica, String tipo) {
+    public Empleados(String pasaporte, String nombre, int telefono, String mail, String contraseña, String fichaMedica, String tipo) {
         this.pasaporte = pasaporte;
         this.nombre = nombre;
         this.telefono = telefono;
         this.mail = mail;
         this.contraseña = contraseña;
-        this.fichaMedica = fichaMedica;
+        this.ficha_medica = fichaMedica;
         this.tipo = tipo;
     }
 
@@ -102,12 +96,12 @@ public class Empleados {
         this.contraseña = contraseña;
     }
 
-    public LocalDate getFichaMedica() {
-        return fichaMedica;
+    public String getFicha_medica() {
+        return ficha_medica;
     }
 
-    public void setFichaMedica(LocalDate fichaMedica) {
-        this.fichaMedica = fichaMedica;
+    public void setFicha_medica(String ficha_medica) {
+        this.ficha_medica = ficha_medica;
     }
 
     @Override
@@ -118,8 +112,9 @@ public class Empleados {
                 ", telefono=" + telefono +
                 ", mail='" + mail + '\'' +
                 ", contraseña='" + contraseña + '\'' +
-                ", fichaMedica=" + fichaMedica +
+                ", ficha_medica=" + ficha_medica +
                 ", tipo='" + tipo + '\'' +
                 '}';
     }
 }
+

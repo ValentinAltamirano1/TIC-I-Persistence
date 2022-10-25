@@ -17,6 +17,7 @@ public class EmpresaController {
 
     @GetMapping
     public List<Empresas> getEmpresas(){
+        System.out.println(empresas.getEmpresa());
         return empresas.getEmpresa();
     }
 

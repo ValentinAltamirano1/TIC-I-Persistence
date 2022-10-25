@@ -10,6 +10,6 @@ import java.util.Optional;
 public interface CentrosDeportivosRepository extends JpaRepository<CentrosDeportivos,Long> {
 
     @Query("SELECT d FROM CentrosDeportivos d WHERE d.rut = ?1")
-    Optional<CentrosDeportivos>findCentroDeportivoByDireccion(Long rut);
+    Optional<CentrosDeportivos>findCentroDeportivoByRut(Long rut);
 
 }

@@ -1,5 +1,6 @@
 package com.example.PersistanceApp.Empleados;
 
+
 import com.example.PersistanceApp.Usuario.Usuarios;
 import com.example.PersistanceApp.Usuario.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,16 +12,12 @@ import java.util.Optional;
 @Service
 public class EmpleadosService {
     private EmpleadosRepository empleadosRepository;
-
     private UsuariosService usuariosService;
 
-    public EmpleadosService(UsuariosService usuariosService) {
-        this.usuariosService = usuariosService;
-    }
-
     @Autowired
-    public EmpleadosService (EmpleadosRepository empleadosRepository) {
+    public EmpleadosService (EmpleadosRepository empleadosRepository, UsuariosService usuariosService) {
         this.empleadosRepository = empleadosRepository;
+        this.usuariosService= usuariosService;
     }
 
     public List<Empleados> getEmpleado(){return empleadosRepository.findAll(); //devuelve lista
@@ -31,7 +28,7 @@ public class EmpleadosService {
         Usuarios usuario = new Usuarios(empleados.getMail(),empleados.getContraseña(),empleados.getTipo());
         if(empleadoByPasaporte.isPresent()){
             try {
-                throw new IllegalAccessException("Centro Deportivo ingresado");
+                throw new IllegalAccessException("Empleado ya ingresado");
             } catch (IllegalAccessException e) {
 
             }

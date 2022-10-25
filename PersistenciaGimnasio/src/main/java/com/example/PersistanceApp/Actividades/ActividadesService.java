@@ -1,7 +1,6 @@
 package com.example.PersistanceApp.Actividades;
 
-import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivos;
-import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivosRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +18,8 @@ public class ActividadesService {
 
     public List<Actividades> getActividades(){return actividadesRepository.findAll(); //devuelve lista
     }
+
+    public List<Actividades> getActividadesCateg(Actividades actividades){return actividadesRepository.findActividadesByCategoria(actividades.getCategoria());}
 
     public void addNewActividades(Actividades actividades) {
         Optional<Actividades> actividadesById = actividadesRepository.findActividadesByNombre(actividades.getNombre());

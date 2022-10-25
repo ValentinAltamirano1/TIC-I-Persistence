@@ -6,16 +6,6 @@ import javax.persistence.*;
 @Table
 public class Usuarios {
     @Id
-    @SequenceGenerator(
-            name="usuarios_sequence",
-            sequenceName="usuarios_sequence",
-            allocationSize = 1)
-
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "usuarios_sequence"
-    )
-
     @Column(name = "mail", updatable = false)
     private String mail;
     @Column(name = "contraseña", nullable = false , unique = true)
@@ -57,3 +47,4 @@ public class Usuarios {
                 '}';
     }
 }
+
