@@ -1,34 +1,34 @@
 package com.example.PersistanceApp.Actividades;
 
 
-import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivos;
-import com.example.PersistanceApp.Empleados.Empleados;
-import com.example.PersistanceApp.Empresas.Empresas;
-
 import javax.persistence.*;
-import java.util.Date;
-import java.util.Set;
+
 
 @Entity(name = "Actividades")
 @Table
 public class Actividades {
+
+    /*@Id
+@GeneratedValue(strategy = GenerationType.SEQUENCE)
+@Column(name = "id_actividad")
+private int id_actividad;
+@Column(name = "nombre", updatable = false)
+private String nombre;
+
+@ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+@JoinTable(name = "actividades_empleados_mapping")
+@JoinColumn(name = "id_actividad")
+@JoinColumn(name = "id_empleado")
+private Set<Empleados> empleados;
+
+
+@ManyToOne
+@JoinColumn(name = "id_centrodep", insertable = false,updatable = false)
+CentrosDeportivos centrosDeportivos; // muchos actividades pueden pertenecer a un mismo centro deportivo
+     */
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id_actividad")
-    private int id_actividad;
     @Column(name = "nombre", updatable = false)
     private String nombre;
-
-    @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinTable(name = "actividades_empleados_mapping")
-    @JoinColumn(name = "id_actividad")
-    @JoinColumn(name = "id_empleado")
-    private Set<Empleados> empleados;
-
-
-    @ManyToOne
-    @JoinColumn(name = "id_centrodep", insertable = false,updatable = false)
-    CentrosDeportivos centrosDeportivos; // muchos actividades pueden pertenecer a un mismo centro deportivo
     @Column(name = "horario",nullable = false )
     private String horario;
     @Column(name = "precio" ,nullable = false)
