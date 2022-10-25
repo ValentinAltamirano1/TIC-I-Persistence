@@ -19,7 +19,7 @@ public class ActividadesService {
     public List<Actividades> getActividades(){return actividadesRepository.findAll(); //devuelve lista
     }
 
-    public List<Actividades> getActividadesCateg(Actividades actividades){return actividadesRepository.findActividadesByCategoria(actividades.getCategoria());}
+    public List<Actividades> getActividadesCateg(String categoria){return actividadesRepository.findActividadesByCategoria(categoria);}
 
     public void addNewActividades(Actividades actividades) {
         Optional<Actividades> actividadesById = actividadesRepository.findActividadesByNombre(actividades.getNombre());

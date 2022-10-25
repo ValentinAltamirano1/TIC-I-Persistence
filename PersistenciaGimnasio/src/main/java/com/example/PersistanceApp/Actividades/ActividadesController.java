@@ -23,6 +23,11 @@ public class ActividadesController {
         return actividadesService.getActividades();
     }
 
+    @GetMapping("/{categoria}")
+    public List<Actividades> getActividadesCancha(@PathVariable("categoria") String categoria){
+        return actividadesService.getActividadesCateg(categoria);
+    }
+
     @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public void registrarNuevaActividad(@RequestBody Actividades actividades){
         actividadesService.addNewActividades(actividades);
