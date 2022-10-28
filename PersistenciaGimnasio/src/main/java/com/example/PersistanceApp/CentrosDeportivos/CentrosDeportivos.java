@@ -11,11 +11,10 @@ import java.util.Set;
 @Table
 public class CentrosDeportivos {
 
-    @OneToMany(mappedBy = "centrosDeportivos", orphanRemoval = true)
-    private List<Actividades> actividad = new ArrayList<>();
+
 
     @Id
-    @Column(name = "rut", updatable = false)
+    @Column(name = "rut", nullable = false)
     private Long rut;
     @Column(name = "telefono", nullable = false , unique = true)
     private Long telefono;
@@ -33,13 +32,7 @@ public class CentrosDeportivos {
     @Column(name = "tipo", nullable = false)
     private String tipo;
 
-    public List<Actividades> getActividad() {
-        return actividad;
-    }
 
-    public void setActividad(List<Actividades> actividad) {
-        this.actividad = actividad;
-    }
 
 
     public CentrosDeportivos(Long rut, Long telefono, String nombre, String direccion, String mail, String contra, String tipo) {

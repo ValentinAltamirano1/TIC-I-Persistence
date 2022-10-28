@@ -2,23 +2,18 @@ package com.example.PersistanceApp.Actividades;
 
 
 import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivos;
-import com.example.PersistanceApp.Empleados.Empleados;
-import com.example.PersistanceApp.Imagen.Imagenes;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 
 @Entity(name = "Actividades")
-@Table
+@Table()
 public class Actividades {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id_actividad")
+    @Column(name = "id_actividad", nullable = false)
     private int id_actividad;
 
 
@@ -40,6 +35,9 @@ public class Actividades {
    /* @OneToMany
     @JoinColumn(name = "id_actividad")
     private Set<Imagenes> imagenes;*/
+    @ManyToOne
+    @JoinColumn(name = "centros_deportivos_rut")
+    private CentrosDeportivos centrosDeportivos;
 
     @Column(name = "nombre", updatable = false)
     private String nombre;
@@ -58,10 +56,6 @@ public class Actividades {
     @Column(name = "cupos" , nullable = false)
     private int cupos;
 
-    @ManyToOne
-    @JoinColumn(name = "centros_deportivos_rut")
-    private CentrosDeportivos centrosDeportivos;
-
     public CentrosDeportivos getCentrosDeportivos() {
         return centrosDeportivos;
     }
@@ -69,7 +63,6 @@ public class Actividades {
     public void setCentrosDeportivos(CentrosDeportivos centrosDeportivos) {
         this.centrosDeportivos = centrosDeportivos;
     }
-
 
     public Actividades() {
     }
