@@ -139,6 +139,7 @@ public class Actividades {
         this.cupos = cupos;
     }
 
+
     @Override
     public String toString() {
         return "Actividades{" +
