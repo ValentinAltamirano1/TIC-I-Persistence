@@ -1,10 +1,18 @@
 package com.example.PersistanceApp.CentrosDeportivos;
 
+import com.example.PersistanceApp.Actividades.Actividades;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity (name="CentrosDeportivos")
 @Table
 public class CentrosDeportivos {
+
+    @OneToMany
+    @JoinColumn(name = "rut")
+    private Set<Actividades> actividadesSet;
+
     @Id
     @Column(name = "rut", updatable = false)
     private Long rut;
