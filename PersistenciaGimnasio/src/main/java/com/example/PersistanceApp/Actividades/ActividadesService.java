@@ -22,7 +22,7 @@ public class ActividadesService {
     public List<Actividades> getActividadesCateg(String categoria){return actividadesRepository.findActividadesByCategoria(categoria);}
 
     public void addNewActividades(Actividades actividades) {
-        Optional<Actividades> actividadesById = actividadesRepository.findActividadesByNombre(actividades.getNombre());
+        Optional<Actividades> actividadesById = actividadesRepository.findActividadesById(actividades.getId_actividad());
         if(actividadesById.isPresent()){
             try {
                 throw new IllegalAccessException("Actividad ya ingresada");

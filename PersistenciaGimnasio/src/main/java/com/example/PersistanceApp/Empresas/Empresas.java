@@ -1,14 +1,18 @@
 package com.example.PersistanceApp.Empresas;
 
+import com.example.PersistanceApp.Empleados.Empleados;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table
 public class Empresas {
-    /*@OneToMany
-@JoinColumn(name = "id_empresa")
-private Set<Empleados> empleados;
-*/
+
+    @OneToMany
+    @JoinColumn(name = "rut")
+    private Set<Empleados> empleados;
+
     @Id
     @Column(name = "rut", updatable = false)
     private Long rut;

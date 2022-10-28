@@ -1,20 +1,29 @@
 package com.example.PersistanceApp.Empleados;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import com.example.PersistanceApp.Actividades.Actividades;
+import com.example.PersistanceApp.Empresas.Empresas;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
 public class Empleados {
-    /*@ManyToMany(mappedBy = "empleados")
-    private Set<Actividades>actividades;
+
+   /* @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "actividades_empleados",
+                joinColumns= @JoinColumn(name="pasaporte"),
+            inverseJoinColumns = @JoinColumn(name = "id_actividad"))
+    private List<Actividades> actividades=new ArrayList<>();*/
+
+
 
 
     @ManyToOne
-    @JoinColumn(name = "id_empresa", insertable = false,updatable = false)
-    Empresas empresas; // muchos empleados pueden pertenecer a una misma empresa*/
+    @JoinColumn(name = "rut", insertable = false,updatable = false)
+    Empresas empresas; // muchos empleados pueden pertenecer a una misma empresa
 
     @Id
     @Column(name = "pasaporte")
