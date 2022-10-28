@@ -38,7 +38,6 @@ public class Actividades {
     @JoinColumn(name = "id_actividad")
     private Set<Imagenes> imagenes;
 
-
     @Column(name = "nombre", updatable = false)
     private String nombre;
     @Column(name = "horario",nullable = false )
@@ -50,17 +49,25 @@ public class Actividades {
     @Column(name = "capacidad" , nullable = false)
     private int capacidad;
 
+    @Column(name = "descripcion" , nullable = false)
+    private String descripcion;
+
+    @Column(name = "cupos" , nullable = false)
+    private int cupos;
+
 
 
     public Actividades() {
     }
 
-    public Actividades(String nombre, String horario, int precio, String categoria, int capacidad) {
+    public Actividades(String nombre, String horario, int precio, String categoria, int capacidad, String descripcion, int cupos) {
         this.nombre = nombre;
         this.horario = horario;
         this.precio = precio;
         this.categoria = categoria;
         this.capacidad = capacidad;
+        this.descripcion = descripcion;
+        this.cupos = cupos;
     }
 
     public String getNombre() {
@@ -109,14 +116,32 @@ public class Actividades {
         this.id_actividad = id_actividad;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public int getCupos() {
+        return cupos;
+    }
+
+    public void setCupos(int cupos) {
+        this.cupos = cupos;
+    }
+
     @Override
     public String toString() {
         return "Actividades{" +
                 "nombre='" + nombre + '\'' +
-                ", horario=" + horario +
+                ", horario='" + horario + '\'' +
                 ", precio=" + precio +
                 ", categoria='" + categoria + '\'' +
                 ", capacidad=" + capacidad +
+                ", descripcion='" + descripcion + '\'' +
+                ", cupos=" + cupos +
                 '}';
     }
 }
