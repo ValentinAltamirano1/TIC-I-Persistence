@@ -3,15 +3,16 @@ package com.example.PersistanceApp.CentrosDeportivos;
 import com.example.PersistanceApp.Actividades.Actividades;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity (name="CentrosDeportivos")
 @Table
 public class CentrosDeportivos {
 
-    @OneToMany
-    @JoinColumn(name = "rut")
-    private Set<Actividades> actividadesSet;
+    @OneToMany(mappedBy = "centrosDeportivos", orphanRemoval = true)
+    private List<Actividades> actividad = new ArrayList<>();
 
     @Id
     @Column(name = "rut", updatable = false)
@@ -31,6 +32,14 @@ public class CentrosDeportivos {
 
     @Column(name = "tipo", nullable = false)
     private String tipo;
+
+    public List<Actividades> getActividad() {
+        return actividad;
+    }
+
+    public void setActividad(List<Actividades> actividad) {
+        this.actividad = actividad;
+    }
 
 
     public CentrosDeportivos(Long rut, Long telefono, String nombre, String direccion, String mail, String contra, String tipo) {

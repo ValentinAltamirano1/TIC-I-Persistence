@@ -12,18 +12,12 @@ import java.util.Set;
 @Table
 public class Empleados {
 
+
    /* @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "actividades_empleados",
                 joinColumns= @JoinColumn(name="pasaporte"),
             inverseJoinColumns = @JoinColumn(name = "id_actividad"))
     private List<Actividades> actividades=new ArrayList<>();*/
-
-
-
-
-    @ManyToOne
-    @JoinColumn(name = "rut", insertable = false,updatable = false)
-    Empresas empresas; // muchos empleados pueden pertenecer a una misma empresa
 
     @Id
     @Column(name = "pasaporte")
@@ -43,6 +37,18 @@ public class Empleados {
     private String ficha_medica;
     @Column(name = "tipo")
     private String tipo;
+
+    @ManyToOne
+    @JoinColumn(name = "empresas_rut")
+    private Empresas empresas;
+
+    public Empresas getEmpresas() {
+        return empresas;
+    }
+
+    public void setEmpresas(Empresas empresas) {
+        this.empresas = empresas;
+    }
 
     public Empleados() {
     }
@@ -112,6 +118,7 @@ public class Empleados {
     public void setFicha_medica(String ficha_medica) {
         this.ficha_medica = ficha_medica;
     }
+
 
     @Override
     public String toString() {

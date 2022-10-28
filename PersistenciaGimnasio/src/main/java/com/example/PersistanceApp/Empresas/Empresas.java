@@ -3,15 +3,15 @@ package com.example.PersistanceApp.Empresas;
 import com.example.PersistanceApp.Empleados.Empleados;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 @Table
 public class Empresas {
-
-    @OneToMany
-    @JoinColumn(name = "rut")
-    private Set<Empleados> empleados;
+    @OneToMany(mappedBy = "empresas", orphanRemoval = true)
+    private List<Empleados> empleadoses = new ArrayList<>();
 
     @Id
     @Column(name = "rut", updatable = false)
@@ -27,6 +27,14 @@ public class Empresas {
 
     @Column(name = "tipo", nullable = false)
     private String tipo;
+
+    public List<Empleados> getEmpleadoses() {
+        return empleadoses;
+    }
+
+    public void setEmpleadoses(List<Empleados> empleadoses) {
+        this.empleadoses = empleadoses;
+    }
 
     public Empresas() {
     }

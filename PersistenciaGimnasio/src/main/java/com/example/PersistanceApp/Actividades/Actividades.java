@@ -15,10 +15,12 @@ import java.util.Set;
 @Table
 public class Actividades {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id_actividad")
     private int id_actividad;
+
 
    /* @ManyToMany(mappedBy = "actividades")
     private List<Empleados> empleados=new ArrayList<>() ;
@@ -30,13 +32,14 @@ public class Actividades {
     private Set<Empleados> empleados;*/
 
 
-    @ManyToOne
-    @JoinColumn(name = "rut", insertable = false,updatable = false)
-    CentrosDeportivos centrosDeportivos; // muchos actividades pueden pertenecer a un mismo centro deportivo
 
-    @OneToMany
+    /*@ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @JoinColumn(name = "rut")
+    private CentrosDeportivos centrosDeportivos; // muchos actividades pueden pertenecer a un mismo centro deportivo
+
+   /* @OneToMany
     @JoinColumn(name = "id_actividad")
-    private Set<Imagenes> imagenes;
+    private Set<Imagenes> imagenes;*/
 
     @Column(name = "nombre", updatable = false)
     private String nombre;
@@ -55,6 +58,17 @@ public class Actividades {
     @Column(name = "cupos" , nullable = false)
     private int cupos;
 
+    @ManyToOne
+    @JoinColumn(name = "centros_deportivos_rut")
+    private CentrosDeportivos centrosDeportivos;
+
+    public CentrosDeportivos getCentrosDeportivos() {
+        return centrosDeportivos;
+    }
+
+    public void setCentrosDeportivos(CentrosDeportivos centrosDeportivos) {
+        this.centrosDeportivos = centrosDeportivos;
+    }
 
 
     public Actividades() {

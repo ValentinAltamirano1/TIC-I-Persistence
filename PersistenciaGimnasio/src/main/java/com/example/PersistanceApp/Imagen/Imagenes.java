@@ -18,10 +18,9 @@ import javax.persistence.*;
 
 public class Imagenes {
 
-
     @ManyToOne
-    @JoinColumn(name = "id_actividad",updatable = true)
-    Actividades actividades; // muchos empleados pueden pertenecer a una misma empresa
+    @JoinColumn(name = "actividades_id_actividad")
+    private Actividades actividades;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +33,14 @@ public class Imagenes {
     @Lob
     @Column(name = "imagedata",length = 1000)
     private byte[] imageData;
+
+    public Actividades getActividades() {
+        return actividades;
+    }
+
+    public void setActividades(Actividades actividades) {
+        this.actividades = actividades;
+    }
 
     public Imagenes(String nombre, String tipo, byte[] imageData) {
         this.nombre = nombre;
