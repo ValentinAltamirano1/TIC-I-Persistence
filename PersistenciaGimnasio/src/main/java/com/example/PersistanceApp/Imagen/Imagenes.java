@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Arrays;
 
 @Entity
 @Table(name = "imagenes")
@@ -24,7 +25,7 @@ public class Imagenes {
 
     @Id
     @Lob
-    @Column(name = "imagedata",length = 1000)
+    @Column(name = "imagedata",length = 100000)
     private byte[] imageData;
 
     public Actividades getActividades() {
@@ -47,4 +48,10 @@ public class Imagenes {
         this.imageData = imageData;
     }
 
+    @Override
+    public String toString() {
+        return "Imagenes{" +
+                "imageData=" + Arrays.toString(imageData) +
+                '}';
+    }
 }
