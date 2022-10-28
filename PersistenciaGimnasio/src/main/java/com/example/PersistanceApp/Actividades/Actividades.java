@@ -56,6 +56,9 @@ public class Actividades {
     @Column(name = "cupos" , nullable = false)
     private int cupos;
 
+    @Column(name = "imagen" , nullable = false)
+    private String imagen;
+
     public CentrosDeportivos getCentrosDeportivos() {
         return centrosDeportivos;
     }
@@ -67,7 +70,7 @@ public class Actividades {
     public Actividades() {
     }
 
-    public Actividades(String nombre, String horario, int precio, String categoria, int capacidad, String descripcion, int cupos) {
+    public Actividades(String nombre, String horario, int precio, String categoria, int capacidad, String descripcion, int cupos, String imagen) {
         this.nombre = nombre;
         this.horario = horario;
         this.precio = precio;
@@ -75,6 +78,7 @@ public class Actividades {
         this.capacidad = capacidad;
         this.descripcion = descripcion;
         this.cupos = cupos;
+        this.imagen = imagen;
     }
 
     public String getNombre() {
@@ -139,6 +143,14 @@ public class Actividades {
         this.cupos = cupos;
     }
 
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
     @Override
     public String toString() {
         return "Actividades{" +
@@ -149,6 +161,7 @@ public class Actividades {
                 ", capacidad=" + capacidad +
                 ", descripcion='" + descripcion + '\'' +
                 ", cupos=" + cupos +
+                ", imagen='" + imagen + '\'' +
                 '}';
     }
 }
