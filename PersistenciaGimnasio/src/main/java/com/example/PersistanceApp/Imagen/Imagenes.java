@@ -23,13 +23,6 @@ public class Imagenes {
     private Actividades actividades;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String nombre;
-
-    private String tipo;
-
     @Lob
     @Column(name = "imagedata",length = 1000)
     private byte[] imageData;
@@ -42,26 +35,8 @@ public class Imagenes {
         this.actividades = actividades;
     }
 
-    public Imagenes(String nombre, String tipo, byte[] imageData) {
-        this.nombre = nombre;
-        this.tipo = tipo;
+    public Imagenes(byte[] imageData) {
         this.imageData = imageData;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
     }
 
     public byte[] getImageData() {

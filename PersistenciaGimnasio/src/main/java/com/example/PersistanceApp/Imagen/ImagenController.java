@@ -26,20 +26,43 @@ public class ImagenController {
         this.imagenService = imagenService;
     }
 
-    @PostMapping("/uploadImage")
+    @PostMapping("/upload")
+    public void uploadImage(@RequestParam ("imagenes")MultipartFile file) throws IOException{
+        imagenService.uploadImage(file);
+    }
+
+    @PostMapping("/uploadMultipleImages")
+    public void uploadMultipleFiles(@RequestParam ("imagen")MultipartFile[] files){
+        for(MultipartFile file : files) {
+            try {
+                imagenService.uploadImage(file);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+    }
+
+    @GetMapping("/download/{fileName}")
+    public ResponseEntity<byte[]> downloadImage(@PathVariable byte fileName){
+        byte[] image= imagenService.downloadImage(fileName);
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
+    }
+
+
+   /* @PostMapping("/uploadImage")
     public ResponseEntity<?> uploadimage (@RequestParam ("imagen")MultipartFile file) throws IOException{
         String response=imagenService.uploadImage(file);
 
         return  ResponseEntity.status(HttpStatus.OK).body(response);
 
-    }
+    }*/
 
-
-    @PostMapping("/uploadMultipleImages")
+   /* @PostMapping("/uploadMultipleImages")
     public ResponseEntity uploadMultipleFiles(@RequestParam ("imagen")MultipartFile[] files){
         /*try {
             return Arrays.asList(files).stream().map(file -> uploadimage(file)).collect(Collectors.toList());
-        }catch (IOException e){}*/
+        }catch (IOException e){}
 
         for(MultipartFile file : files) {
             try {
@@ -50,10 +73,11 @@ public class ImagenController {
         }
 
         return  ResponseEntity.status(HttpStatus.OK).body("");
-    }
+    }*/
 
 
-    @GetMapping("/info/{nombre}")
+
+   /* @GetMapping("/info/{nombre}")
     public ResponseEntity<?> getImageInfoByNombre(@PathVariable("nombre") String nombre){
         Imagenes imagenes= imagenService.getInfoByImageByName(nombre);
 
@@ -65,7 +89,7 @@ public class ImagenController {
 
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("imagen/png"))
                 .body(imagen);
-    }
+    }*/
 
 
 }

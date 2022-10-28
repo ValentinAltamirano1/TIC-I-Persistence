@@ -37,7 +37,7 @@ public class Actividades {
     private Set<Imagenes> imagenes;*/
     @ManyToOne
     @JoinColumn(name = "centros_deportivos_rut")
-    private CentrosDeportivos centrosDeportivos;
+    private CentrosDeportivos   centrosDeportivos;
 
     @Column(name = "nombre", updatable = false)
     private String nombre;
