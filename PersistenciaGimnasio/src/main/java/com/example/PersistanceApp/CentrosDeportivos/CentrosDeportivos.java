@@ -11,8 +11,6 @@ import java.util.Set;
 @Table
 public class CentrosDeportivos {
 
-
-
     @Id
     @Column(name = "rut", nullable = false)
     private Long rut;
@@ -31,8 +29,6 @@ public class CentrosDeportivos {
 
     @Column(name = "tipo", nullable = false)
     private String tipo;
-
-
 
 
     public CentrosDeportivos(Long rut, Long telefono, String nombre, String direccion, String mail, String contra, String tipo) {

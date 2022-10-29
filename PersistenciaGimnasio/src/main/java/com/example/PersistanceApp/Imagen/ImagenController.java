@@ -26,8 +26,8 @@ public class ImagenController {
         this.imagenService = imagenService;
     }
 
-    @PostMapping("/upload")
-    public void uploadImage(@RequestParam ("imagenes")MultipartFile file) throws IOException{
+    @PostMapping()
+    public void uploadImage(@RequestParam MultipartFile file) throws IOException{
         imagenService.uploadImage(file);
     }
 

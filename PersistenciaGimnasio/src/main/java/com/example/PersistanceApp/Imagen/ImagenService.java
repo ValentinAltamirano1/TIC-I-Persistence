@@ -30,7 +30,7 @@ public class ImagenService {
        return null;
     }*/
     public Imagenes uploadImage(MultipartFile file)throws IOException{
-        Imagenes pImage= new Imagenes(ImageUtility.compressImage(file.getBytes()));
+        Imagenes pImage= new Imagenes(file.getBytes());
         return imageRepository.save(pImage);
     }
 

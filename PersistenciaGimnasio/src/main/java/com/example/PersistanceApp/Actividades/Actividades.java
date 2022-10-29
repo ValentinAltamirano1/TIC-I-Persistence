@@ -2,8 +2,10 @@ package com.example.PersistanceApp.Actividades;
 
 
 import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivos;
+import com.example.PersistanceApp.Imagen.Imagenes;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity(name = "Actividades")
@@ -35,6 +37,7 @@ public class Actividades {
    /* @OneToMany
     @JoinColumn(name = "id_actividad")
     private Set<Imagenes> imagenes;*/
+
     @ManyToOne
     @JoinColumn(name = "centros_deportivos_rut")
     private CentrosDeportivos   centrosDeportivos;
@@ -56,9 +59,8 @@ public class Actividades {
     @Column(name = "cupos" , nullable = false)
     private int cupos;
 
-    @Column(name = "imagen", nullable = false)
-    @Lob
-    private String imagen;
+    //@Column(name = "imagen", nullable = false)
+    //private List<Imagenes> imagen;
 
     public CentrosDeportivos getCentrosDeportivos() {
         return centrosDeportivos;
@@ -71,7 +73,9 @@ public class Actividades {
     public Actividades() {
     }
 
-    public Actividades(String nombre, String horario, int precio, String categoria, int capacidad, String descripcion, int cupos, String imagen) {
+    public Actividades(int id_actividad, CentrosDeportivos centrosDeportivos, String nombre, String horario, int precio, String categoria, int capacidad, String descripcion, int cupos, List<Imagenes> imagen) {
+        this.id_actividad = id_actividad;
+        this.centrosDeportivos = centrosDeportivos;
         this.nombre = nombre;
         this.horario = horario;
         this.precio = precio;
@@ -79,7 +83,7 @@ public class Actividades {
         this.capacidad = capacidad;
         this.descripcion = descripcion;
         this.cupos = cupos;
-        this.imagen = imagen;
+        //this.imagen = imagen;
     }
 
     public String getNombre() {
@@ -143,26 +147,28 @@ public class Actividades {
     public void setCupos(int cupos) {
         this.cupos = cupos;
     }
-
-    public String getImagen() {
+/*
+    public List<Imagenes> getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(List<Imagenes> imagen) {
         this.imagen = imagen;
-    }
+    }*/
 
     @Override
     public String toString() {
         return "Actividades{" +
-                "nombre='" + nombre + '\'' +
+                "id_actividad=" + id_actividad +
+                ", centrosDeportivos=" + centrosDeportivos +
+                ", nombre='" + nombre + '\'' +
                 ", horario='" + horario + '\'' +
                 ", precio=" + precio +
                 ", categoria='" + categoria + '\'' +
                 ", capacidad=" + capacidad +
                 ", descripcion='" + descripcion + '\'' +
                 ", cupos=" + cupos +
-                ", imagen='" + imagen + '\'' +
+           //     ", imagen=" + imagen +
                 '}';
     }
 }

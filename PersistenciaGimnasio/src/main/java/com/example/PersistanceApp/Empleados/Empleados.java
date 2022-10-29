@@ -53,14 +53,15 @@ public class Empleados {
     public Empleados() {
     }
 
-    public Empleados(String pasaporte, String nombre, int telefono, String mail, String contraseña, String fichaMedica, String tipo) {
+    public Empleados(String pasaporte, String nombre, int telefono, String mail, String contraseña, String ficha_medica, String tipo) {
         this.pasaporte = pasaporte;
         this.nombre = nombre;
         this.telefono = telefono;
         this.mail = mail;
         this.contraseña = contraseña;
-        this.ficha_medica = fichaMedica;
+        this.ficha_medica = ficha_medica;
         this.tipo = tipo;
+        //this.empresas = empresas;
     }
 
     public String getPasaporte() {
@@ -128,8 +129,9 @@ public class Empleados {
                 ", telefono=" + telefono +
                 ", mail='" + mail + '\'' +
                 ", contraseña='" + contraseña + '\'' +
-                ", ficha_medica=" + ficha_medica +
+                ", ficha_medica='" + ficha_medica + '\'' +
                 ", tipo='" + tipo + '\'' +
+                ", empresas=" + empresas +
                 '}';
     }
 }
