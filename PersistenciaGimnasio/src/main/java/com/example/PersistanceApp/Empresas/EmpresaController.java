@@ -1,4 +1,5 @@
 package com.example.PersistanceApp.Empresas;
+import com.example.PersistanceApp.Actividades.Actividades;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,12 @@ public class EmpresaController {
     @Autowired
     public EmpresaController(EmpresaService empresaService){
         this.empresas = empresaService;
+    }
+
+    @GetMapping("/{mail}")
+    public List<Empresas> getEmpresa(@PathVariable("mail") String mail){
+        System.out.println(mail);
+        return empresas.getEmpresa(mail);
     }
 
     @GetMapping
