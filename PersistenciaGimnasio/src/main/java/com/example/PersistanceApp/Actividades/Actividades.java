@@ -73,7 +73,7 @@ public class Actividades {
     public Actividades() {
     }
 
-    public Actividades(int id_actividad, CentrosDeportivos centrosDeportivos, String nombre, String horario, int precio, String categoria, int capacidad, String descripcion, int cupos, List<Imagenes> imagen) {
+    public Actividades(int id_actividad, CentrosDeportivos centrosDeportivos, String nombre, String horario, int precio, String categoria, int capacidad,int cupos, String descripcion/*, List<Imagenes> imagen*/) {
         this.id_actividad = id_actividad;
         this.centrosDeportivos = centrosDeportivos;
         this.nombre = nombre;

@@ -1,5 +1,6 @@
 package com.example.PersistanceApp.CentrosDeportivos;
 
+import com.example.PersistanceApp.Empresas.Empresas;
 import com.example.PersistanceApp.Usuario.Usuarios;
 import com.example.PersistanceApp.Usuario.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class CentrosDeportivosService {
         this.centrosDeportivosRepository = centrosDeportivosRepository;
         this.usuariosService = usuariosService;
     }
+
+    public List<CentrosDeportivos> getCentroDeportivo(String mail){
+        return centrosDeportivosRepository.findCentrosDeportivosByMail(mail);}
 
     public List<CentrosDeportivos> getCentroDeportivo(){
         return centrosDeportivosRepository.findAll(); //devuelve lista

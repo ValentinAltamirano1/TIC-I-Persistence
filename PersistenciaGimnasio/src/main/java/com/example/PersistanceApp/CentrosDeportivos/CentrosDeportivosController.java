@@ -1,5 +1,6 @@
 package com.example.PersistanceApp.CentrosDeportivos;
 
+import com.example.PersistanceApp.Empresas.Empresas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,11 @@ public class CentrosDeportivosController {
     @Autowired
     public CentrosDeportivosController(CentrosDeportivosService centrosDeportivosService){
         this.centrosDeportivosService = centrosDeportivosService;
+    }
+    @GetMapping("/{mail}")
+    public List<CentrosDeportivos> getCentroDeportivo(@PathVariable("mail") String mail){
+        System.out.println(mail);
+        return centrosDeportivosService.getCentroDeportivo(mail);
     }
 
     @GetMapping
