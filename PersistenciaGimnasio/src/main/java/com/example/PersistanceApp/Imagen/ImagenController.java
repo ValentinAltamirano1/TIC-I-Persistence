@@ -44,7 +44,7 @@ public class ImagenController {
     }
 
     @GetMapping("/download/{fileName}")
-    public ResponseEntity<byte[]> downloadImage(@PathVariable byte fileName){
+    public ResponseEntity<byte[]> downloadImage(@PathVariable String fileName){
         byte[] image= imagenService.downloadImage(fileName);
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
     }

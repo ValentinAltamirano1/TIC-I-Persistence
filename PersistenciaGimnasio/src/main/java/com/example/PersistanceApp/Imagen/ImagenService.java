@@ -30,13 +30,13 @@ public class ImagenService {
        return null;
     }
     public Imagenes uploadImage(MultipartFile file)throws IOException{
-        Imagenes pImage= new Imagenes(file.getBytes());
+        Imagenes pImage= new Imagenes(file.getBytes(), file.getName());
         return imageRepository.save(pImage);
     }
 
-    public byte [] downloadImage(byte fileName){
-        Optional<Imagenes> imageData=imageRepository.findByImageData(fileName);
-        return ImageUtility.decompressImage(imageData.get().getImageData());
+    public byte [] downloadImage(String fileName){
+        Optional<Imagenes> imageData=imageRepository.findByNombre(fileName);
+        return imageData.get().getImageData();
     }
 
     @Transactional

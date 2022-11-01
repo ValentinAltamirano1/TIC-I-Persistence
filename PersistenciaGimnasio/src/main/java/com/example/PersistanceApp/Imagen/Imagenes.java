@@ -23,13 +23,22 @@ public class Imagenes {
     @JoinColumn(name = "actividades_id_actividad")
     private Actividades actividades;
 
-    @Id
+
     @Lob
     @Column(name = "imagedata",length = 100000)
     private byte[] imageData;
 
+    @Id
+    @Column(name = "nombre")
+    private String nombre;
+
     public Actividades getActividades() {
         return actividades;
+    }
+
+    public Imagenes(byte[] imageData, String nombre) {
+        this.imageData = imageData;
+        this.nombre = nombre;
     }
 
     public void setActividades(Actividades actividades) {
@@ -48,10 +57,19 @@ public class Imagenes {
         this.imageData = imageData;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     @Override
     public String toString() {
         return "Imagenes{" +
                 "imageData=" + Arrays.toString(imageData) +
+                ", nombre='" + nombre + '\'' +
                 '}';
     }
 }
