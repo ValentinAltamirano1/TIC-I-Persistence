@@ -2,6 +2,7 @@ package com.example.PersistanceApp.Empleados;
 
 import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivos;
 import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivosService;
+import com.example.PersistanceApp.Empresas.Empresas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,11 @@ public class EmpleadosController {
     @Autowired
     public EmpleadosController(EmpleadosService empleadosService){
         this.empleadosService = empleadosService;}
-
+    @GetMapping("/{mail}")
+    public List<Empleados> getEmpleado(@PathVariable("mail") String mail){
+        System.out.println(mail);
+        return empleadosService.getEmpleado(mail);
+    }
     @GetMapping
     public List<Empleados> getEmpleado(){
         return empleadosService.getEmpleado();

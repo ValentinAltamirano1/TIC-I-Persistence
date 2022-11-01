@@ -1,6 +1,7 @@
 package com.example.PersistanceApp.Empleados;
 
 
+import com.example.PersistanceApp.Empresas.Empresas;
 import com.example.PersistanceApp.Usuario.Usuarios;
 import com.example.PersistanceApp.Usuario.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class EmpleadosService {
         this.usuariosService= usuariosService;
     }
 
+    public List<Empleados> getEmpleado(String mail){
+        return empleadosRepository.findEmpleadoByMail(mail);}
     public List<Empleados> getEmpleado(){return empleadosRepository.findAll(); //devuelve lista
     }
 

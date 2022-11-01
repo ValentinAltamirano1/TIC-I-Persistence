@@ -1,5 +1,6 @@
 package com.example.PersistanceApp.Usuario;
 
+import com.example.PersistanceApp.Actividades.Actividades;
 import com.example.PersistanceApp.Usuario.Usuarios;
 import com.example.PersistanceApp.Usuario.UsuariosService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -29,6 +30,7 @@ public class UsuariosController {
     public ResponseEntity login (@RequestBody Usuarios usuarios) throws JsonProcessingException {
         return usuariosService.check(usuarios.getMail(),usuarios.getContraseña());
     }
+
 
     /*@PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public void registrarNuevoUsuario(@RequestBody Usuarios usuarios){
