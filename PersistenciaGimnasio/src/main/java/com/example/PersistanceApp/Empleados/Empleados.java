@@ -39,10 +39,10 @@ public class Empleados {
     private String tipo;
 
     @Column(name = "saldo")
-    private String saldo;
+    private int saldo;
 
     @Column(name = "sobre_giro")
-    private String sobre_giro;
+    private int sobre_giro;
 
     @ManyToOne
     @JoinColumn(name = "empresas_rut")
@@ -59,23 +59,7 @@ public class Empleados {
     public Empleados() {
     }
 
-    public String getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(String saldo) {
-        this.saldo = saldo;
-    }
-
-    public String getSobre_giro() {
-        return sobre_giro;
-    }
-
-    public void setSobre_giro(String sobre_giro) {
-        this.sobre_giro = sobre_giro;
-    }
-
-    public Empleados(String pasaporte, String nombre, int telefono, String mail, String contraseña, String ficha_medica, String tipo, String saldo, String sobre_giro, Empresas empresas) {
+    public Empleados(String pasaporte, String nombre, int telefono, String mail, String contraseña, String ficha_medica, String tipo, int saldo, int sobre_giro, Empresas empresas) {
         this.pasaporte = pasaporte;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -86,6 +70,22 @@ public class Empleados {
         this.saldo = saldo;
         this.sobre_giro = sobre_giro;
         this.empresas = empresas;
+    }
+
+    public int getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(int saldo) {
+        this.saldo = saldo;
+    }
+
+    public int getSobre_giro() {
+        return sobre_giro;
+    }
+
+    public void setSobre_giro(int sobre_giro) {
+        this.sobre_giro = sobre_giro;
     }
 
     public String getPasaporte() {
