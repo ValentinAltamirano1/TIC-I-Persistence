@@ -38,8 +38,8 @@ public class Empleados {
     @Column(name = "tipo")
     private String tipo;
 
-    @Column(name = "salario")
-    private String salario;
+    @Column(name = "saldo")
+    private String saldo;
 
     @ManyToOne
     @JoinColumn(name = "empresas_rut")
@@ -56,13 +56,6 @@ public class Empleados {
     public Empleados() {
     }
 
-    public String getSalario() {
-        return salario;
-    }
-
-    public void setSalario(String salario) {
-        this.salario = salario;
-    }
 
     public Empleados(String pasaporte, String nombre, int telefono, String mail, String contraseña, String ficha_medica, String tipo, String salario, Empresas empresas) {
         this.pasaporte = pasaporte;
@@ -72,7 +65,6 @@ public class Empleados {
         this.contraseña = contraseña;
         this.ficha_medica = ficha_medica;
         this.tipo = tipo;
-        this.salario = salario;
         this.empresas = empresas;
     }
 
