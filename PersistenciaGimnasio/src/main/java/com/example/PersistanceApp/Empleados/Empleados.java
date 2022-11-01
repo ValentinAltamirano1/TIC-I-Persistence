@@ -41,6 +41,9 @@ public class Empleados {
     @Column(name = "saldo")
     private String saldo;
 
+    @Column(name = "sobre_giro")
+    private String sobre_giro;
+
     @ManyToOne
     @JoinColumn(name = "empresas_rut")
     private Empresas empresas;
@@ -56,19 +59,23 @@ public class Empleados {
     public Empleados() {
     }
 
-
-    public Empleados(String pasaporte, String nombre, int telefono, String mail, String contraseña, String ficha_medica, String tipo, String salario, Empresas empresas) {
-        this.pasaporte = pasaporte;
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.mail = mail;
-        this.contraseña = contraseña;
-        this.ficha_medica = ficha_medica;
-        this.tipo = tipo;
-        this.empresas = empresas;
+    public String getSaldo() {
+        return saldo;
     }
 
-    public Empleados(String pasaporte, String nombre, int telefono, String mail, String contraseña, String ficha_medica, String tipo, Empresas empresas) {
+    public void setSaldo(String saldo) {
+        this.saldo = saldo;
+    }
+
+    public String getSobre_giro() {
+        return sobre_giro;
+    }
+
+    public void setSobre_giro(String sobre_giro) {
+        this.sobre_giro = sobre_giro;
+    }
+
+    public Empleados(String pasaporte, String nombre, int telefono, String mail, String contraseña, String ficha_medica, String tipo, String saldo, String sobre_giro, Empresas empresas) {
         this.pasaporte = pasaporte;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -76,6 +83,8 @@ public class Empleados {
         this.contraseña = contraseña;
         this.ficha_medica = ficha_medica;
         this.tipo = tipo;
+        this.saldo = saldo;
+        this.sobre_giro = sobre_giro;
         this.empresas = empresas;
     }
 
