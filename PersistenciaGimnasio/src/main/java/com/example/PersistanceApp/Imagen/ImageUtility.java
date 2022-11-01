@@ -3,7 +3,7 @@ package com.example.PersistanceApp.Imagen;
 import java.io.ByteArrayOutputStream;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
-
+/*
 public class ImageUtility {
 
     public static byte[] compressImage(byte[] data) {
@@ -43,3 +43,4 @@ public class ImageUtility {
     }
 }
 
+*/

@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Arrays;
-
+/*
 @Entity
 @Table(name = "imagenes")
 @Data
@@ -55,3 +55,4 @@ public class Imagenes {
                 '}';
     }
 }
+ */

@@ -21,7 +21,7 @@ public class CentrosDeportivos {
     @Column(name = "direccion", nullable = false , columnDefinition = "TEXT" , unique = true)
     private String direccion;
 
-    @Column(name = "mail", nullable = false)
+    @Column(name = "mail", nullable = false , unique = true)
     private String mail;
 
     @Column(name = "contra", nullable = false)

@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+/*
 @RestController
 @RequestMapping(path="api/v1/gimnasio/imagen")
 public class ImagenController {
@@ -50,15 +50,15 @@ public class ImagenController {
     }
 
 
-   /* @PostMapping("/uploadImage")
+   @PostMapping("/uploadImage")
     public ResponseEntity<?> uploadimage (@RequestParam ("imagen")MultipartFile file) throws IOException{
         String response=imagenService.uploadImage(file);
 
         return  ResponseEntity.status(HttpStatus.OK).body(response);
 
-    }*/
+    }
 
-   /* @PostMapping("/uploadMultipleImages")
+    @PostMapping("/uploadMultipleImages")
     public ResponseEntity uploadMultipleFiles(@RequestParam ("imagen")MultipartFile[] files){
         /*try {
             return Arrays.asList(files).stream().map(file -> uploadimage(file)).collect(Collectors.toList());
@@ -73,11 +73,9 @@ public class ImagenController {
         }
 
         return  ResponseEntity.status(HttpStatus.OK).body("");
-    }*/
+    }
 
-
-
-   /* @GetMapping("/info/{nombre}")
+    @GetMapping("/info/{nombre}")
     public ResponseEntity<?> getImageInfoByNombre(@PathVariable("nombre") String nombre){
         Imagenes imagenes= imagenService.getInfoByImageByName(nombre);
 
@@ -89,7 +87,8 @@ public class ImagenController {
 
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("imagen/png"))
                 .body(imagen);
-    }*/
+    }
 
 
 }
+*/

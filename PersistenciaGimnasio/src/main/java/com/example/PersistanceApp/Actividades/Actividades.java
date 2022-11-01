@@ -2,22 +2,16 @@ package com.example.PersistanceApp.Actividades;
 
 
 import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivos;
-import com.example.PersistanceApp.Imagen.Imagenes;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 
 @Entity(name = "Actividades")
 @Table()
 public class Actividades {
-
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id_actividad", nullable = false)
-    private int id_actividad;
-
 
    /* @ManyToMany(mappedBy = "actividades")
     private List<Empleados> empleados=new ArrayList<>() ;
@@ -38,14 +32,8 @@ public class Actividades {
     @JoinColumn(name = "id_actividad")
     private Set<Imagenes> imagenes;*/
 
-    @ManyToOne
-    @JoinColumn(name = "centros_deportivos_rut")
-    private CentrosDeportivos   centrosDeportivos;
-
-    @Column(name = "nombre", updatable = false)
-    private String nombre;
-    @Column(name = "horario",nullable = false )
-    private String horario;
+    @EmbeddedId
+    private ActividadesKey actividadesKey;
     @Column(name = "precio" ,nullable = false)
     private int precio;
     @Column(name = "categoria" ,nullable = false )
@@ -62,43 +50,19 @@ public class Actividades {
     //@Column(name = "imagen", nullable = false)
     //private List<Imagenes> imagen;
 
-    public CentrosDeportivos getCentrosDeportivos() {
-        return centrosDeportivos;
-    }
-
-    public void setCentrosDeportivos(CentrosDeportivos centrosDeportivos) {
-        this.centrosDeportivos = centrosDeportivos;
-    }
 
     public Actividades() {
     }
 
-    public Actividades(int id_actividad, CentrosDeportivos centrosDeportivos, String nombre, String horario, int precio, String categoria, int capacidad,int cupos, String descripcion/*, List<Imagenes> imagen*/) {
-        this.id_actividad = id_actividad;
-        this.centrosDeportivos = centrosDeportivos;
-        this.nombre = nombre;
-        this.horario = horario;
+    public Actividades(ActividadesKey actividadesKey, int precio, String categoria, int capacidad, String descripcion, int cupos) {
+        this.actividadesKey = actividadesKey;
         this.precio = precio;
         this.categoria = categoria;
         this.capacidad = capacidad;
         this.descripcion = descripcion;
         this.cupos = cupos;
-        //this.imagen = imagen;
     }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getHorario() {return horario;
-    }
-
-    public void setHorario(String horario) {this.horario = horario;
-    }
 
     public int getPrecio() {
         return precio;
@@ -122,14 +86,6 @@ public class Actividades {
 
     public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
-    }
-
-    public int getId_actividad() {
-        return id_actividad;
-    }
-
-    public void setId_actividad(int id_actividad) {
-        this.id_actividad = id_actividad;
     }
 
     public String getDescripcion() {
@@ -156,19 +112,23 @@ public class Actividades {
         this.imagen = imagen;
     }*/
 
+    public ActividadesKey getActividadesKey() {
+        return actividadesKey;
+    }
+
+    public void setActividadesKey(ActividadesKey actividadesKey) {
+        this.actividadesKey = actividadesKey;
+    }
+
     @Override
     public String toString() {
         return "Actividades{" +
-                "id_actividad=" + id_actividad +
-                ", centrosDeportivos=" + centrosDeportivos +
-                ", nombre='" + nombre + '\'' +
-                ", horario='" + horario + '\'' +
+                "actividadesKey=" + actividadesKey +
                 ", precio=" + precio +
                 ", categoria='" + categoria + '\'' +
                 ", capacidad=" + capacidad +
                 ", descripcion='" + descripcion + '\'' +
                 ", cupos=" + cupos +
-           //     ", imagen=" + imagen +
                 '}';
     }
 }

@@ -22,15 +22,14 @@ public class ActividadesService {
     public List<Actividades> getActividadesCateg(String categoria){return actividadesRepository.findActividadesByCategoria(categoria);}
 
     public void addNewActividades(Actividades actividades) {
-        Optional<Actividades> actividadesById = actividadesRepository.findActividadesById(actividades.getId_actividad());
-        if(actividadesById.isPresent()){
+        /*Optional<Actividades> actividadesByKey = actividadesRepository.findActividadesByKey(actividades.getActividadesKey());
+        if(actividadesByKey.isPresent()){
             try {
                 throw new IllegalAccessException("Actividad ya ingresada");
             } catch (IllegalAccessException e) {
 
             }
-        }
-
+        }*/
         actividadesRepository.save(actividades);
     }
 
