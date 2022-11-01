@@ -20,9 +20,6 @@ public class ActividadesKey implements Serializable {
     private String horario;
 
 
-    @Column(name = "fecha", nullable = false)
-    private String fecha;
-
 
     public ActividadesKey() {
     }
@@ -31,7 +28,6 @@ public class ActividadesKey implements Serializable {
         this.centrosDeportivos = centrosDeportivos;
         this.nombre = nombre;
         this.horario = horario;
-        this.fecha = fecha;
     }
 
     public CentrosDeportivos getCentrosDeportivos() {
@@ -58,13 +54,6 @@ public class ActividadesKey implements Serializable {
         this.horario = horario;
     }
 
-    public String getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
-    }
 
     @Override
     public String toString() {
@@ -72,7 +61,6 @@ public class ActividadesKey implements Serializable {
                 "centrosDeportivos=" + centrosDeportivos +
                 ", nombre='" + nombre + '\'' +
                 ", horario='" + horario + '\'' +
-                ", fecha='" + fecha + '\'' +
                 '}';
     }
 }
