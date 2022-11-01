@@ -10,17 +10,32 @@ import java.io.Serializable;
 @Table
 public class Reservas {
 
-    @OneToOne
+   /* @OneToOne
     @JoinColumns({
             @JoinColumn(name = "actividades_centros_deportivos_rut", referencedColumnName = "centros_deportivos_rut"),
             @JoinColumn(name = "actividades_nombre", referencedColumnName = "nombre"),
             @JoinColumn(name = "actividades_horario", referencedColumnName = "horario"),
             @JoinColumn(name = "actividades_fecha", referencedColumnName = "fecha")
+    })*/
+    @OneToOne(orphanRemoval = true)
+    @JoinColumns({
+            @JoinColumn(name = "ACTIVIDADES_CENTROS_DEPORTIVOS_RUT", referencedColumnName = "CENTROS_DEPORTIVOS_RUT"),
+            @JoinColumn(name = "ACTIVIDADES_NOMBRE", referencedColumnName = "NOMBRE"),
+            @JoinColumn(name = "ACTIVIDADES_HORARIO", referencedColumnName = "HORARIO")
     })
     private Actividades actividades;
 
+
     @EmbeddedId
     private ReservasKey reservasKey;
+
+    public Actividades getActividades() {
+        return actividades;
+    }
+
+    public void setActividades(Actividades actividades) {
+        this.actividades = actividades;
+    }
 
     public Reservas() {
     }
@@ -30,13 +45,7 @@ public class Reservas {
         this.reservasKey = reservasKey;
     }
 
-    public Actividades getActividades() {
-        return actividades;
-    }
 
-    public void setActividades(Actividades actividades) {
-        this.actividades = actividades;
-    }
 
     public ReservasKey getReservasKey() {
         return reservasKey;
