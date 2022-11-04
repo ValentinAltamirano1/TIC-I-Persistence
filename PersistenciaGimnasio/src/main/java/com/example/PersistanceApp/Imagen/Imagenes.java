@@ -8,54 +8,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Arrays;
-/*
-@Entity
-@Table(name = "imagenes")
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 
-public class Imagenes {
 
-    @ManyToOne
-    @JoinColumn(name = "actividades_id_actividad")
-    private Actividades actividades;
 
+@Embeddable
+public class Imagenes implements Serializable {
 
     @Lob
-    @Column(name = "imagedata",length = 100000)
-    private byte[] imageData;
-
-    @Id
     @Column(name = "nombre")
     private String nombre;
 
-    public Actividades getActividades() {
-        return actividades;
+    public Imagenes() {
+
     }
 
-    public Imagenes(byte[] imageData, String nombre) {
-        this.imageData = imageData;
+    public Imagenes(String nombre) {
         this.nombre = nombre;
     }
 
-    public void setActividades(Actividades actividades) {
-        this.actividades = actividades;
-    }
-
-    public Imagenes(byte[] imageData) {
-        this.imageData = imageData;
-    }
-
-    public byte[] getImageData() {
-        return imageData;
-    }
-
-    public void setImageData(byte[] imageData) {
-        this.imageData = imageData;
-    }
 
     public String getNombre() {
         return nombre;
@@ -68,9 +40,7 @@ public class Imagenes {
     @Override
     public String toString() {
         return "Imagenes{" +
-                "imageData=" + Arrays.toString(imageData) +
                 ", nombre='" + nombre + '\'' +
                 '}';
     }
 }
- */

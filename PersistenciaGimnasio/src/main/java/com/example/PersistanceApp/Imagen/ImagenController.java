@@ -1,6 +1,6 @@
 package com.example.PersistanceApp.Imagen;
 
-
+/*
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,53 +10,52 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
-/*
+
+
 @RestController
 @RequestMapping(path="api/v1/gimnasio/imagen")
 public class ImagenController {
 
 
     private final ImagenService imagenService;
+
     @Autowired
     public ImagenController(ImagenService imagenService) {
         this.imagenService = imagenService;
     }
 
     @PostMapping()
-    public void uploadImage(@RequestParam MultipartFile file) throws IOException{
+    public void uploadImage(@RequestParam MultipartFile file) throws IOException {
         imagenService.uploadImage(file);
     }
 
     @PostMapping("/uploadMultipleImages")
-    public void uploadMultipleFiles(@RequestParam ("imagen")MultipartFile[] files){
-        for(MultipartFile file : files) {
+    public void uploadMultipleFiles(@RequestParam("imagen") MultipartFile[] files) {
+        for (MultipartFile file : files) {
             try {
                 imagenService.uploadImage(file);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-
     }
 
     @GetMapping("/download/{fileName}")
-    public ResponseEntity<byte[]> downloadImage(@PathVariable String fileName){
-        byte[] image= imagenService.downloadImage(fileName);
+    public ResponseEntity<String> downloadImage(@PathVariable String fileName) {
+        String image = imagenService.downloadImage(fileName);
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png")).body(image);
     }
+}
+/*
+    @PostMapping("/uploadImage")
+    public ResponseEntity<?> uploadimage(@RequestParam("imagen") MultipartFile file) throws IOException {
+        String response = imagenService.uploadImage(file);
 
-
-   @PostMapping("/uploadImage")
-    public ResponseEntity<?> uploadimage (@RequestParam ("imagen")MultipartFile file) throws IOException{
-        String response=imagenService.uploadImage(file);
-
-        return  ResponseEntity.status(HttpStatus.OK).body(response);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
 
     }
+
 
     @PostMapping("/uploadMultipleImages")
     public ResponseEntity uploadMultipleFiles(@RequestParam ("imagen")MultipartFile[] files){
