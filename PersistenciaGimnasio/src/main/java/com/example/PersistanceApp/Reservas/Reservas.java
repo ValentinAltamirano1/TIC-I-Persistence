@@ -10,13 +10,6 @@ import java.io.Serializable;
 @Table
 public class Reservas {
 
-   /* @OneToOne
-    @JoinColumns({
-            @JoinColumn(name = "actividades_centros_deportivos_rut", referencedColumnName = "centros_deportivos_rut"),
-            @JoinColumn(name = "actividades_nombre", referencedColumnName = "nombre"),
-            @JoinColumn(name = "actividades_horario", referencedColumnName = "horario"),
-            @JoinColumn(name = "actividades_fecha", referencedColumnName = "fecha")
-    })*/
     @OneToOne(orphanRemoval = true)
     @JoinColumns({
             @JoinColumn(name = "ACTIVIDADES_CENTROS_DEPORTIVOS_RUT", referencedColumnName = "CENTROS_DEPORTIVOS_RUT"),
@@ -29,6 +22,8 @@ public class Reservas {
     @EmbeddedId
     private ReservasKey reservasKey;
 
+    private boolean asistio;
+
     public Actividades getActividades() {
         return actividades;
     }
@@ -40,11 +35,11 @@ public class Reservas {
     public Reservas() {
     }
 
-    public Reservas(Actividades actividades, ReservasKey reservasKey) {
+    public Reservas(Actividades actividades, ReservasKey reservasKey, boolean asistio) {
         this.actividades = actividades;
         this.reservasKey = reservasKey;
+        this.asistio = asistio;
     }
-
 
 
     public ReservasKey getReservasKey() {
@@ -55,11 +50,20 @@ public class Reservas {
         this.reservasKey = reservasKey;
     }
 
+    public boolean isAsistio() {
+        return asistio;
+    }
+
+    public void setAsistio(boolean asistio) {
+        this.asistio = asistio;
+    }
+
     @Override
     public String toString() {
         return "Reservas{" +
                 "actividades=" + actividades +
                 ", reservasKey=" + reservasKey +
+                ", asistio=" + asistio +
                 '}';
     }
 }
