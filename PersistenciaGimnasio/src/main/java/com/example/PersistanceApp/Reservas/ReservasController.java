@@ -29,6 +29,11 @@ public class ReservasController {
         return reservasService.getActividadesUsuario(pasaporte);
     }
 
+    @GetMapping("/getRut/{rut}")
+    public List<Actividades> getActividadesCentro(@PathVariable("rut") Long rut){
+        return reservasService.getActividadesCentro(rut);
+    }
+
     @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public void registrarNuevaReserva(@RequestBody Reservas reserva){
         reservasService.addNewReserva(reserva);

@@ -9,13 +9,14 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ReservasRepository extends JpaRepository<Reservas, Empleados> {
-
-    /*@Query("SELECT r FROM Empresas r WHERE r.rut = ?1")
-    Optional<Reservas> findEmpresaByEmpleado(Empleados empleados);*/
+public interface ReservasRepository extends JpaRepository<Reservas, Actividades> {
 
     @Query(value = "SELECT r.actividades FROM Reservas r inner join r.reservasKey.empleados e where e.pasaporte = ?1")
     List<Actividades> findActivitiesByPassport(String pasporte);
+
+
+    @Query(value = "SELECT r.actividades FROM Reservas r inner join r.actividades e where e.actividadesKey.centrosDeportivos.rut = ?1")
+    List<Actividades> findActivitiesByRut(Long rut);
 
 
 }
