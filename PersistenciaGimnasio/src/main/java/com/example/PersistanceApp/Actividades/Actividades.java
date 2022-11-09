@@ -1,12 +1,12 @@
 package com.example.PersistanceApp.Actividades;
 
 
-import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivos;
+import com.example.PersistanceApp.Horario.HorarioKey;
 import com.example.PersistanceApp.Imagen.Imagenes;
-import net.minidev.json.annotate.JsonIgnore;
+
 
 import javax.persistence.*;
-import java.io.Serializable;
+
 import java.util.List;
 
 
@@ -28,6 +28,9 @@ public class Actividades {
     @Column(name = "cupos" , nullable = false)
     private int cupos;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Column(name = "horario", nullable = false)
+    private List<HorarioKey> horarios;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Column(name = "imagen", nullable = false)
@@ -46,6 +49,17 @@ public class Actividades {
         this.cupos = cupos;
     }
 
+    public Actividades(ActividadesKey actividadesKey, int precio, String categoria, int capacidad, String descripcion, int cupos, List<HorarioKey> horarios, List<Imagenes> imagen) {
+        this.actividadesKey = actividadesKey;
+        this.precio = precio;
+        this.categoria = categoria;
+        this.capacidad = capacidad;
+        this.descripcion = descripcion;
+        this.cupos = cupos;
+        this.horarios = horarios;
+        this.imagen = imagen;
+    }
+
     public Actividades(ActividadesKey actividadesKey, int precio, String categoria, int capacidad, String descripcion, int cupos, List<Imagenes> imagen) {
         this.actividadesKey = actividadesKey;
         this.precio = precio;
@@ -54,6 +68,14 @@ public class Actividades {
         this.descripcion = descripcion;
         this.cupos = cupos;
         this.imagen = imagen;
+    }
+
+    public List<HorarioKey> getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(List<HorarioKey> horarios) {
+        this.horarios = horarios;
     }
 
     public int getPrecio() {
@@ -121,6 +143,7 @@ public class Actividades {
                 ", capacidad=" + capacidad +
                 ", descripcion='" + descripcion + '\'' +
                 ", cupos=" + cupos +
+                ", horarios=" + horarios +
                 ", imagen=" + imagen +
                 '}';
     }

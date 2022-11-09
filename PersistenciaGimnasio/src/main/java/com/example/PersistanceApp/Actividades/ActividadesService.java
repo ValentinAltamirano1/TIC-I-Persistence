@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ActividadesService {
@@ -16,6 +15,7 @@ public class ActividadesService {
         this.actividadesRepository = actividadesRepository;
     }
 
+    public List<Actividades> getActividadesCentro(String mail){return actividadesRepository.findActividadesByCentro(mail);}
     public List<Actividades> getActividades(){return actividadesRepository.findAll(); //devuelve lista
     }
 

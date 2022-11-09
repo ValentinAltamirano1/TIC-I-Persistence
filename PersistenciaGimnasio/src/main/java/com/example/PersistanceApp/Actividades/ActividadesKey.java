@@ -11,23 +11,16 @@ public class ActividadesKey implements Serializable {
     @JoinColumn(name = "centros_deportivos_rut")
     private CentrosDeportivos centrosDeportivos;
 
-
     @Column(name = "nombre", updatable = false)
     private String nombre;
-
-
-    @Column(name = "horario",nullable = false )
-    private String horario;
-
-
 
     public ActividadesKey() {
     }
 
-    public ActividadesKey(CentrosDeportivos centrosDeportivos, String nombre, String horario, String fecha) {
+    public ActividadesKey(CentrosDeportivos centrosDeportivos, String nombre) {
         this.centrosDeportivos = centrosDeportivos;
         this.nombre = nombre;
-        this.horario = horario;
+
     }
 
     public CentrosDeportivos getCentrosDeportivos() {
@@ -46,21 +39,12 @@ public class ActividadesKey implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getHorario() {
-        return horario;
-    }
-
-    public void setHorario(String horario) {
-        this.horario = horario;
-    }
-
 
     @Override
     public String toString() {
         return "ActividadesKey{" +
                 "centrosDeportivos=" + centrosDeportivos +
                 ", nombre='" + nombre + '\'' +
-                ", horario='" + horario + '\'' +
                 '}';
     }
 }

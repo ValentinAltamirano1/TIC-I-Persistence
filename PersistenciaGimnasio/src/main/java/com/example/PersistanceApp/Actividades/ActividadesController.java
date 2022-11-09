@@ -28,6 +28,11 @@ public class ActividadesController {
         return actividadesService.getActividadesCateg(categoria);
     }
 
+    @GetMapping("/{mail}")
+    public List<Actividades> getActividadesCentroMail(@PathVariable("mail") String mail){
+        return actividadesService.getActividadesCentro(mail);
+    }
+
     @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public void registrarNuevaActividad(@RequestBody Actividades actividades){
         actividadesService.addNewActividades(actividades);
