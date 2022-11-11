@@ -3,6 +3,7 @@ package com.example.PersistanceApp.Actividades;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,9 +17,10 @@ public class ActividadesService {
     }
 
     public List<Actividades> getActividadesCentro(String mail){return actividadesRepository.findActividadesByCentro(mail);}
+
     public List<Actividades> getActividades(){return actividadesRepository.findAll(); //devuelve lista
     }
-
+    @Transactional
     public List<Actividades> getActividadesCateg(String categoria){return actividadesRepository.findActivitiesByCategorise(categoria);}
 
     public void addNewActividades(Actividades actividades) {

@@ -23,7 +23,7 @@ public class ActividadesController {
         return actividadesService.getActividades();
     }
 
-    @GetMapping("/{categoria}")
+    @GetMapping("/categ/{categoria}")
     public List<Actividades> getActividadesCancha(@PathVariable("categoria") String categoria){
         return actividadesService.getActividadesCateg(categoria);
     }

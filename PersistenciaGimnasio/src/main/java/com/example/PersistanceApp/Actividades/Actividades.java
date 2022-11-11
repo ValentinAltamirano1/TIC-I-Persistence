@@ -54,15 +54,6 @@ public class Actividades {
         this.imagen = imagen;
     }
 
-    public Actividades(ActividadesKey actividadesKey, int precio, String categoria, int capacidad, String descripcion, int cupos, List<Imagenes> imagen) {
-        this.actividadesKey = actividadesKey;
-        this.precio = precio;
-        this.categoria = categoria;
-        this.capacidad = capacidad;
-        this.descripcion = descripcion;
-        this.cupos = cupos;
-        this.imagen = imagen;
-    }
 
     public List<HorarioKey> getHorarios() {
         return horarios;
@@ -127,6 +118,8 @@ public class Actividades {
     public void setActividadesKey(ActividadesKey actividadesKey) {
         this.actividadesKey = actividadesKey;
     }
+
+
 
     @Override
     public String toString() {
