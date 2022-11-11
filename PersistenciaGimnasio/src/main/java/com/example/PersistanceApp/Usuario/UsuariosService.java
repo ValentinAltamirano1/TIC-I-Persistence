@@ -1,5 +1,6 @@
 package com.example.PersistanceApp.Usuario;
 
+import com.example.PersistanceApp.Reservas.ReservasKey;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -52,6 +53,13 @@ public class UsuariosService {
             }
         }*/
         usuariosRepository.save(usuarios);
+    }
+    public void deleteUsuario(String mail){
+        boolean existe=usuariosRepository.existsById(mail);
+        if (!existe){
+            throw new IllegalStateException("usuario con mail" + mail + "no existe");
+        }
+        usuariosRepository.deleteById(mail);
     }
 
 }

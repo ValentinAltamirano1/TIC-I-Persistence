@@ -42,4 +42,14 @@ public class CentrosDeportivosService {
         usuariosService.addNewUsuario(usuario);
         centrosDeportivosRepository.save(centrosDeportivos);
     }
+    public void deleteCentroDeportivo(Long rut){
+        boolean existe=centrosDeportivosRepository.existsById(rut);
+        if (!existe){
+            throw new IllegalStateException("centro con rut"+ rut + "no existe");
+        }
+        centrosDeportivosRepository.deleteById(rut);
+
+
+
+    }
 }

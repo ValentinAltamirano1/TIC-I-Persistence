@@ -1,5 +1,6 @@
 package com.example.PersistanceApp.Reservas;
 
+import com.example.PersistanceApp.Actividades.Actividades;
 import com.example.PersistanceApp.Empleados.Empleados;
 
 import javax.persistence.Embeddable;
@@ -8,7 +9,7 @@ import javax.persistence.ManyToOne;
 import java.io.Serializable;
 
 @Embeddable
-public class ReservasKey implements Serializable {
+public class ReservasKey extends Actividades implements Serializable { //se extendio actividades para que se pueda implementar el eliminar
 
     @ManyToOne
     @JoinColumn(name = "empleados_pasaporte")

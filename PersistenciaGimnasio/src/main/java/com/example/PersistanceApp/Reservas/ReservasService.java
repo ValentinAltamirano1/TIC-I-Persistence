@@ -34,4 +34,11 @@ public class ReservasService {
         }*/
         reservasRepository.save(reserva);
     }
+    public void deleteReserva(ReservasKey reservasKey){
+        boolean existe=reservasRepository.existsById(reservasKey);
+        if (!existe){
+            throw new IllegalStateException("reservas con key"+ reservasKey + "no existe");
+        }
+        reservasRepository.deleteById(reservasKey);
+    }
 }

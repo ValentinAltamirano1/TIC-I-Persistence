@@ -37,4 +37,8 @@ public class ActividadesController {
     public void registrarNuevaActividad(@RequestBody Actividades actividades){
         actividadesService.addNewActividades(actividades);
     }
+    @DeleteMapping(path = "{actividadesKey}") //se eliminan asi cuando una depende del otro??
+    public void deleteActividades(@PathVariable("actividadesKey") ActividadesKey actividadesKey  ){
+        actividadesService.deleteActividad(actividadesKey);
+    }
 }

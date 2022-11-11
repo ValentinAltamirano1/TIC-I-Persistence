@@ -1,6 +1,5 @@
 package com.example.PersistanceApp.Empresas;
 
-import com.example.PersistanceApp.Actividades.Actividades;
 import com.example.PersistanceApp.Usuario.Usuarios;
 import com.example.PersistanceApp.Usuario.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +35,12 @@ public class EmpresaService {
         }
         usuariosService.addNewUsuario(usuario);
         EmpresaRepository.save(empresa);
+    }
+    public void deleteEmpresa(Long rut){
+        boolean existe=EmpresaRepository.existsById(rut);
+        if (!existe){
+            throw new IllegalStateException("empresa con rut"+ rut + "no existe");
+        }
+        EmpresaRepository.deleteById(rut);
     }
 }
