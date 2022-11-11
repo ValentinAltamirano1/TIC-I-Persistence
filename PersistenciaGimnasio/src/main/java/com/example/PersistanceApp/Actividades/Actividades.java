@@ -1,6 +1,7 @@
 package com.example.PersistanceApp.Actividades;
 
 
+
 import com.example.PersistanceApp.Horario.HorarioKey;
 import com.example.PersistanceApp.Imagen.Imagenes;
 
@@ -28,9 +29,9 @@ public class Actividades {
     @Column(name = "cupos" , nullable = false)
     private int cupos;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    @Column(name = "horario", nullable = false)
-    private List<HorarioKey> horarios;
+    @ElementCollection()
+    @Column(name = "horarios", nullable = false)
+    private List <HorarioKey> horarios;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Column(name = "imagen", nullable = false)
@@ -40,14 +41,7 @@ public class Actividades {
     public Actividades() {
     }
 
-    public Actividades(ActividadesKey actividadesKey, int precio, String categoria, int capacidad, String descripcion, int cupos) {
-        this.actividadesKey = actividadesKey;
-        this.precio = precio;
-        this.categoria = categoria;
-        this.capacidad = capacidad;
-        this.descripcion = descripcion;
-        this.cupos = cupos;
-    }
+
 
     public Actividades(ActividadesKey actividadesKey, int precio, String categoria, int capacidad, String descripcion, int cupos, List<HorarioKey> horarios, List<Imagenes> imagen) {
         this.actividadesKey = actividadesKey;

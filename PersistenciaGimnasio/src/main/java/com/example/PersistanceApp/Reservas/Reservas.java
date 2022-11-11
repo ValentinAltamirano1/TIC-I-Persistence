@@ -9,15 +9,12 @@ import java.io.Serializable;
 @Entity
 @Table
 public class Reservas {
-
     @OneToOne(orphanRemoval = true)
     @JoinColumns({
             @JoinColumn(name = "ACTIVIDADES_CENTROS_DEPORTIVOS_RUT", referencedColumnName = "CENTROS_DEPORTIVOS_RUT"),
-            @JoinColumn(name = "ACTIVIDADES_NOMBRE", referencedColumnName = "NOMBRE"),
-            @JoinColumn(name = "ACTIVIDADES_HORARIO", referencedColumnName = "HORARIO")
+            @JoinColumn(name = "ACTIVIDADES_NOMBRE", referencedColumnName = "NOMBRE")
     })
     private Actividades actividades;
-
 
     @EmbeddedId
     private ReservasKey reservasKey;
@@ -31,6 +28,7 @@ public class Reservas {
     public void setActividades(Actividades actividades) {
         this.actividades = actividades;
     }
+
 
     public Reservas() {
     }
