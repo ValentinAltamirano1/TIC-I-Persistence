@@ -32,5 +32,9 @@ public class CentrosDeportivosController {
     public void registrarNuevoCentroDeportivo(@RequestBody CentrosDeportivos centrosDeportivos){
         centrosDeportivosService.addNewCentroDeportivo(centrosDeportivos);
     }
+    @DeleteMapping(path = "{rut}")
+    public void deleteCentroDeportivos(@PathVariable("rut") Long rut){
+        centrosDeportivosService.deleteCentroDeportivo(rut);
+    }
 
 }

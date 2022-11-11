@@ -38,4 +38,9 @@ public class ReservasController {
     public void registrarNuevaReserva(@RequestBody Reservas reserva){
         reservasService.addNewReserva(reserva);
     }
+
+    @DeleteMapping(path = "{reservasKey}")
+    public void deleteReservas(@PathVariable("reservasKey") ReservasKey reservasKey){
+        reservasService.deleteReserva(reservasKey);
+    }
 }

@@ -33,4 +33,15 @@ public class ActividadesService {
         actividadesRepository.save(actividades);
     }
 
+    public void deleteActividad(ActividadesKey actividadesKey){ //ver si sirve pasarlo a string???
+        boolean existe=actividadesRepository.existsById(String.valueOf(actividadesKey));
+        if (!existe){
+            throw new IllegalStateException("Actividad con key"+ actividadesKey + "no existe");
+        }
+        actividadesRepository.deleteById(String.valueOf(actividadesKey));
+
+
+
+    }
+
 }

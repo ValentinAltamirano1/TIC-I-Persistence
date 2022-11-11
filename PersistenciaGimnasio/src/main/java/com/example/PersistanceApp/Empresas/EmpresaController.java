@@ -32,4 +32,9 @@ public class EmpresaController {
     public void registrarNuevoCentroDeportivo(@RequestBody Empresas empresa){
         empresas.addNewEmpresa(empresa);
     }
+
+    @DeleteMapping(path = "{rut}")
+    public void deleteEmpresas(@PathVariable("rut") Long rut){
+        empresas.deleteEmpresa(rut);
+    }
 }

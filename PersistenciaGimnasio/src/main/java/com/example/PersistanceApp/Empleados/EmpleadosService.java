@@ -39,7 +39,13 @@ public class EmpleadosService {
         usuariosService.addNewUsuario(usuario);
         empleadosRepository.save(empleados);
     }
-
+    public void deleteEmpleado(String pasaporte){
+        boolean existe=empleadosRepository.existsById(pasaporte);
+        if (!existe){
+            throw new IllegalStateException("empleado con pasaporte"+ pasaporte + "no existe");
+        }
+        empleadosRepository.deleteById(pasaporte);
+    }
 
 
 }

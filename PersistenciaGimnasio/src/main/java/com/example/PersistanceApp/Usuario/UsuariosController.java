@@ -36,5 +36,9 @@ public class UsuariosController {
     public void registrarNuevoUsuario(@RequestBody Usuarios usuarios){
         usuariosService.addNewUsuario(usuarios);
     }*/
+    @DeleteMapping(path = "{mail}")
+    public void deleteUsuarios(@PathVariable("mail") String mail){
+        usuariosService.deleteUsuario(mail);
+    }
 
 }
