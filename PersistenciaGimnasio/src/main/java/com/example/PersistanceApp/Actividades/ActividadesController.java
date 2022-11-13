@@ -2,6 +2,7 @@ package com.example.PersistanceApp.Actividades;
 
 import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivos;
 import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivosService;
+import com.example.PersistanceApp.Horario.HorarioKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,11 @@ public class ActividadesController {
     @GetMapping("/{mail}")
     public List<Actividades> getActividadesCentroMail(@PathVariable("mail") String mail){
         return actividadesService.getActividadesCentro(mail);
+    }
+
+    @GetMapping("/horario/{dia_semana}/{nombre}/{rut}")
+    public List<HorarioKey> getActividadesHorarios(@PathVariable("dia_semana") String dia_semana,@PathVariable("nombre") String nombre , Long rut){
+        return actividadesService.getActividadesHorario(dia_semana,nombre,rut);
     }
 
     @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})

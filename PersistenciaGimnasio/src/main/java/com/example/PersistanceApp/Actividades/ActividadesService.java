@@ -1,6 +1,7 @@
 package com.example.PersistanceApp.Actividades;
 
 
+import com.example.PersistanceApp.Horario.HorarioKey;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +23,8 @@ public class ActividadesService {
     }
     @Transactional
     public List<Actividades> getActividadesCateg(String categoria){return actividadesRepository.findActivitiesByCategorise(categoria);}
+    @Transactional
+    public List<HorarioKey> getActividadesHorario(String dia_semana,String nombre, Long rut){return actividadesRepository.findActivitiesByHorario(dia_semana, nombre,rut);}
 
     public void addNewActividades(Actividades actividades) {
         /*Optional<Actividades> actividadesByKey = actividadesRepository.findActivitiesByKey(actividades.getActividadesKey());
