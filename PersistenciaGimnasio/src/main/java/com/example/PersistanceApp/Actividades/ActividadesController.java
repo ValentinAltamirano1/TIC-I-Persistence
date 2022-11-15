@@ -35,7 +35,7 @@ public class ActividadesController {
     }
 
     @GetMapping("/horario/{dia_semana}/{nombre}/{rut}")
-    public List<HorarioKey> getActividadesHorarios(@PathVariable("dia_semana") String dia_semana,@PathVariable("nombre") String nombre , Long rut){
+    public List<HorarioKey> getActividadesHorarios(@PathVariable("dia_semana") String dia_semana,@PathVariable("nombre") String nombre ,@PathVariable("rut") Long rut){
         return actividadesService.getActividadesHorario(dia_semana,nombre,rut);
     }
 
