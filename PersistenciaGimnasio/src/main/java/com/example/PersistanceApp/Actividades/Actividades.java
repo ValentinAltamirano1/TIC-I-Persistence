@@ -121,6 +121,10 @@ public class Actividades {
 
 
 
+    public Actividades(List<HorarioKey> horarios) {
+        this.horarios = horarios;
+    }
+
     @Override
     public String toString() {
         return "Actividades{" +
