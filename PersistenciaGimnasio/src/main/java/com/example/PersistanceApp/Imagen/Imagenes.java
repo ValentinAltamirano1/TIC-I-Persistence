@@ -11,7 +11,7 @@ import java.util.Arrays;
 public class Imagenes implements Serializable {
 
     @Lob
-    @Column(name = "nombre")
+    @Column(name = "nombre",nullable = true)
     private String nombre;
 
     public Imagenes() {

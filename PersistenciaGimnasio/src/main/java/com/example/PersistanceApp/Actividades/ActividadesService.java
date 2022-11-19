@@ -60,29 +60,23 @@ public class ActividadesService {
             List<HorarioKey> actividadesByDay = actividadesRepository.findActivitiesByHorarios(actividades.getActividadesKey().getCentrosDeportivos().getRut(), actividades.getActividadesKey().getNombre(),actividades.getCapacidad(),actividades.getCupos(), actividades.getCategoria(), actividades.getDescripcion(),actividades.getPrecio());
             for (int i =0; i<actividadesByDay.size(); i++){
 
-                if (actividadesByDay.get(i).getDia_de_semana().equals(actividades.getHorarios().get(0).getDia_de_semana())){
+                if (actividadesByDay.get(i).getDia_de_semana().equals(actividades.getHorarios().get(0).getDia_de_semana())){ //ver que tengan mismo dia de semana
                     String horario_i=actividadesByDay.get(i).getHorario_inicio();
                     String horario_f=actividadesByDay.get(i).getHorario_fin();
                     LocalTime date_i= LocalTime.parse(horario_i);
                     LocalTime date_f= LocalTime.parse(horario_f);
+                    if ((date_inicio.isAfter(date_i)&& date_fin.isBefore(date_f)) ||(date_inicio.isBefore(date_i) && date_fin.isAfter(date_f))){
+                        return;}
 
-                    if (!(date_inicio.isAfter(date_i) && date_inicio.isBefore(date_f)) || !(date_fin.isAfter(date_i) && date_fin.isBefore(date_f))) {
-                        if (date_inicio.equals(horario_inicio) || date_fin.equals(horario_fin)){
-                            try {
-                                throw new IllegalAccessException("Actividad ya ingresada");
-
-                                }
-                            catch (IllegalAccessException e) {}}}
-                    else{
-                        try {
-                            throw new IllegalAccessException("Actividad ya ingresada");
-                            }
-                        catch (IllegalAccessException e) {}
+                    if ((horario_inicio.equals(horario_i) || date_fin.equals(horario_fin))){
+                        return;
                     }
                 }
-            }
+                }
             actividadesByKey.get().getHorarios().add(actividades.getHorarios().get(0));
-        }else{
+
+        }
+        else{
             actividadesRepository.save(actividades);}
     }
 
