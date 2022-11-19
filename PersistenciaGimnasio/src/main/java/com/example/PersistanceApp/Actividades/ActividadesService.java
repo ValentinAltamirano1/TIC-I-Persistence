@@ -29,7 +29,12 @@ public class ActividadesService {
     public ActividadesService(ActividadesRepository actividadesRepository) {
         this.actividadesRepository = actividadesRepository;
     }
+    @Transactional
+    public List<HorarioKey> getActividadesHorario(String dia_semana, String nombre, Long rut){
+        return actividadesRepository.findActivitiesByDiaSemanaNombreRut(dia_semana, nombre, rut);
+    }
 
+    @Transactional
     public List<Actividades> getActividadesCentro(String mail){return actividadesRepository.findActividadesByCentro(mail);}
     @Transactional
     public List<Actividades> getActividades(){return actividadesRepository.findAll(); //devuelve lista
@@ -41,16 +46,10 @@ public class ActividadesService {
     public List<Actividades> getActividadesNombre(String nombre){return actividadesRepository.findActividadesByNombre(nombre);}
 
     @Transactional
-    public List<HorarioKey> getActividadesHorario(String dia_semana, String nombre, Long rut){return actividadesRepository.findActivitiesByHorario(dia_semana,nombre,rut);}
-
-    @Transactional
     public void addNewActividades(Actividades actividades) {
         String horario_inicio= actividades.getHorarios().get(0).getHorario_inicio();
         System.out.println(horario_inicio);
         String horario_fin= actividades.getHorarios().get(0).getHorario_fin();
-        //String[] time_i = horario_inicio.split ( ":" );
-        //int hour_i = Integer.parseInt ( time_i[0].trim() );
-        //int min_i = Integer.parseInt ( time_i[1].trim() );
         LocalTime date_inicio= LocalTime.parse(horario_inicio);
         LocalTime date_fin= LocalTime.parse(horario_fin);
         System.out.println(date_inicio);
@@ -58,7 +57,7 @@ public class ActividadesService {
 
         if (actividadesByKey.isPresent()){
 
-            List<HorarioKey> actividadesByDay = actividadesRepository.findActivitiesByHorarios(actividades.getActividadesKey().getCentrosDeportivos().getRut(), actividades.getActividadesKey().getNombre());
+            List<HorarioKey> actividadesByDay = actividadesRepository.findActivitiesByHorarios(actividades.getActividadesKey().getCentrosDeportivos().getRut(), actividades.getActividadesKey().getNombre(),actividades.getCapacidad(),actividades.getCupos(), actividades.getCategoria(), actividades.getDescripcion(),actividades.getPrecio());
             for (int i =0; i<actividadesByDay.size(); i++){
 
                 if (actividadesByDay.get(i).getDia_de_semana().equals(actividades.getHorarios().get(0).getDia_de_semana())){
@@ -71,6 +70,7 @@ public class ActividadesService {
                         if (date_inicio.equals(horario_inicio) || date_fin.equals(horario_fin)){
                             try {
                                 throw new IllegalAccessException("Actividad ya ingresada");
+
                                 }
                             catch (IllegalAccessException e) {}}}
                     else{
@@ -85,13 +85,6 @@ public class ActividadesService {
         }else{
             actividadesRepository.save(actividades);}
     }
-
-
-
-
-
-
-
 
     public ActividadesRepository getActividadesRepository() {
         return actividadesRepository;

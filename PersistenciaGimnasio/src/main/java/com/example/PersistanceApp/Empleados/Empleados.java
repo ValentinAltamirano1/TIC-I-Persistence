@@ -11,14 +11,6 @@ import java.util.Set;
 @Entity
 @Table
 public class Empleados {
-
-
-   /* @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "actividades_empleados",
-                joinColumns= @JoinColumn(name="pasaporte"),
-            inverseJoinColumns = @JoinColumn(name = "id_actividad"))
-    private List<Actividades> actividades=new ArrayList<>();*/
-
     @Id
     @Column(name = "pasaporte")
     private String pasaporte;

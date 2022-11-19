@@ -19,7 +19,7 @@ public class EmpleadosController {
         this.empleadosService = empleadosService;}
     @GetMapping("/{mail}")
     public List<Empleados> getEmpleado(@PathVariable("mail") String mail){
-        System.out.println(mail);
+
         return empleadosService.getEmpleado(mail);
     }
     @GetMapping
@@ -36,4 +36,7 @@ public class EmpleadosController {
     public void deleteEmpleados(@PathVariable("pasaporte") String pasaporte){
         empleadosService.deleteEmpleado(pasaporte);
     }
+
+
+
 }
