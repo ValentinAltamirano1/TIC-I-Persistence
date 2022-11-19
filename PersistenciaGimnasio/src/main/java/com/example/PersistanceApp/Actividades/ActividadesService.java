@@ -38,6 +38,12 @@ public class ActividadesService {
     public List<Actividades> getActividadesCateg(String categoria){return actividadesRepository.findActivitiesByCategorise(categoria);}
 
     @Transactional
+    public List<Actividades> getActividadesNombre(String nombre){return actividadesRepository.findActividadesByNombre(nombre);}
+
+    @Transactional
+    public List<HorarioKey> getActividadesHorario(String dia_semana, String nombre, Long rut){return actividadesRepository.findActivitiesByHorario(dia_semana,nombre,rut);}
+
+    @Transactional
     public void addNewActividades(Actividades actividades) {
         String horario_inicio= actividades.getHorarios().get(0).getHorario_inicio();
         System.out.println(horario_inicio);

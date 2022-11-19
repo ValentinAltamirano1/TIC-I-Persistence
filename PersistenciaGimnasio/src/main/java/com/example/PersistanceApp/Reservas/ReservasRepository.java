@@ -18,5 +18,8 @@ public interface ReservasRepository extends JpaRepository<Reservas, Actividades>
     @Query(value = "SELECT r.actividades FROM Reservas r inner join r.actividades e where e.actividadesKey.centrosDeportivos.rut = ?1")
     List<Actividades> findActivitiesByRut(Long rut);
 
+    @Query(value = "SELECT r FROM Reservas r inner join r.actividades a where a.actividadesKey.centrosDeportivos.mail=?1")
+    List<Reservas> findReservasByMail(String mail);
+
 
 }

@@ -4,6 +4,7 @@ package com.example.PersistanceApp.Actividades;
 
 import com.example.PersistanceApp.Horario.HorarioKey;
 import com.example.PersistanceApp.Imagen.Imagenes;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 import javax.persistence.*;

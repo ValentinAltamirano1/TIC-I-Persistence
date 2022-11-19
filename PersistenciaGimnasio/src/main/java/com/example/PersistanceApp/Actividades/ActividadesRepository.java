@@ -26,6 +26,8 @@ public interface ActividadesRepository extends JpaRepository<Actividades, String
     @Query(value = "SELECT h FROM Actividades a INNER JOIN a.horarios h WHERE h.dia_de_semana=?1 AND a.actividadesKey.nombre= ?2 AND a.actividadesKey.centrosDeportivos.rut=?3")
     List<HorarioKey> findActivitiesByHorario(String dia_semana, String nombre, Long rut);
 
+    @Query(value = "SELECT a FROM Actividades a where a.actividadesKey.centrosDeportivos.nombre = ?1")
+    List<Actividades> findActividadesByNombre(String nombre);
 
     @Query(value = "SELECT h FROM Actividades a INNER JOIN a.horarios h WHERE h.dia_de_semana=?1 AND a.actividadesKey.nombre=?2 AND a.actividadesKey.centrosDeportivos.rut=?3")
     List<Actividades> findActivitiesByCategori(String cateogria);

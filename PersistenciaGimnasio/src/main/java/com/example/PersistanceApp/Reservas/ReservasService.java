@@ -22,6 +22,8 @@ public class ReservasService {
 
     @Transactional
     public List<Actividades> getActividadesCentro(Long rut){return reservasRepository.findActivitiesByRut(rut);}
+    @Transactional
+    public List<Reservas> getReservasMail(String mail){return reservasRepository.findReservasByMail(mail);}
 
     public void addNewReserva(Reservas reserva) {
         /*Optional<Actividades> actividadesByKey = actividadesRepository.findActividadesByKey(actividades.getActividadesKey());
@@ -34,11 +36,12 @@ public class ReservasService {
         }*/
         reservasRepository.save(reserva);
     }
+    /*
     public void deleteReserva(ReservasKey reservasKey){
         boolean existe=reservasRepository.existsById(reservasKey);
         if (!existe){
             throw new IllegalStateException("reservas con key"+ reservasKey + "no existe");
         }
         reservasRepository.deleteById(reservasKey);
-    }
+    }*/
 }

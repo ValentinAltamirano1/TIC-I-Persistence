@@ -34,13 +34,18 @@ public class ReservasController {
         return reservasService.getActividadesCentro(rut);
     }
 
+    @GetMapping("/getMail/{mail}")
+    public List<Reservas> getReservasCentros(@PathVariable("mail") String mail){
+        return reservasService.getReservasMail(mail);
+    }
+
     @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public void registrarNuevaReserva(@RequestBody Reservas reserva){
         reservasService.addNewReserva(reserva);
     }
 
-    @DeleteMapping(path = "{reservasKey}")
+   /* @DeleteMapping(path = "{reservasKey}")
     public void deleteReservas(@PathVariable("reservasKey") ReservasKey reservasKey){
         reservasService.deleteReserva(reservasKey);
-    }
+    }*/
 }

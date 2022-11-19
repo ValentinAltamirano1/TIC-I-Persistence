@@ -2,6 +2,7 @@ package com.example.PersistanceApp.Reservas;
 
 import com.example.PersistanceApp.Actividades.Actividades;
 import com.example.PersistanceApp.Empleados.Empleados;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,6 +15,7 @@ public class Reservas {
             @JoinColumn(name = "ACTIVIDADES_CENTROS_DEPORTIVOS_RUT", referencedColumnName = "CENTROS_DEPORTIVOS_RUT"),
             @JoinColumn(name = "ACTIVIDADES_NOMBRE", referencedColumnName = "NOMBRE")
     })
+
     private Actividades actividades;
 
     @EmbeddedId

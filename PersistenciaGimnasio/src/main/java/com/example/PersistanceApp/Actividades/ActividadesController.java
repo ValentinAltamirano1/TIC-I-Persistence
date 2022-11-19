@@ -39,6 +39,11 @@ public class ActividadesController {
         return actividadesService.getActividadesHorario(dia_semana,nombre,rut);
     }
 
+    @GetMapping("/nombre/{nombre}")
+    public List<Actividades> getActividadesNombres(@PathVariable("nombre") String nombre){
+        return actividadesService.getActividadesNombre(nombre);
+    }
+
     @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public void registrarNuevaActividad(@RequestBody Actividades actividades){
         actividadesService.addNewActividades(actividades);
