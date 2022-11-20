@@ -79,6 +79,7 @@ public class ActividadesService {
             actividadesRepository.save(actividades);}
     }
 
+    @Transactional
     public void updateActividad(ActividadesKey actividadesKey){
         actividadesRepository.updateActividadExistente(actividadesKey);
     }

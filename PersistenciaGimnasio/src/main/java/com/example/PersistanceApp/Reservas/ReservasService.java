@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReservasService {
@@ -38,14 +39,14 @@ public class ReservasService {
         return reservas;}
 
     public void addNewReserva(Reservas reserva) {
-        /*Optional<Actividades> actividadesByKey = actividadesRepository.findActividadesByKey(actividades.getActividadesKey());
-        if(actividadesByKey.isPresent()){
+        Optional<Reservas> reservasByKey = reservasRepository.findReservasByKey(reserva.getReservasKey());
+        if(reservasByKey.isPresent()){
             try {
                 throw new IllegalAccessException("Actividad ya ingresada");
             } catch (IllegalAccessException e) {
 
             }
-        }*/
+        }
         reservasRepository.save(reserva);
     }
 
