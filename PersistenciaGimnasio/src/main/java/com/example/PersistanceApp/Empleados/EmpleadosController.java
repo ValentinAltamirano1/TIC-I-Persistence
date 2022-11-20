@@ -21,6 +21,11 @@ public class EmpleadosController {
     public List<Empleados> getEmpleado(@PathVariable("mail") String mail){
         return empleadosService.getEmpleado(mail);
     }
+
+    @GetMapping("/pasaporte/{pasaporte}")
+    public List<Empleados> getEmpleadoPasaporte(@PathVariable("pasaporte") String pasaporte){
+        return empleadosService.getEmpleadoPorPasaporte(pasaporte);
+    }
     @GetMapping
     public List<Empleados> getEmpleado(){
         return empleadosService.getEmpleado();

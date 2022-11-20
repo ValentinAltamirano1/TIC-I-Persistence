@@ -39,7 +39,7 @@ public class ActividadesService {
     @Transactional
     public List<Actividades> getActividadesNombre(String nombre){return actividadesRepository.findActividadesByNombre(nombre);}
     @Transactional
-    public List<Actividades> getActividadMailNombre(String mail, String nombre){return actividadesRepository.findDistinctByActividadesKey(mail,nombre);}
+    public List<Actividades> getActividadMailNombre(String mail, String nombre){return actividadesRepository.findActividadesByKey(mail,nombre);}
     @Transactional
     public List<Actividades> getActividadesCupos(){return actividadesRepository.findActivities();}
     @Transactional

@@ -33,7 +33,7 @@ public interface ActividadesRepository extends JpaRepository<Actividades, String
     @Query(value = "SELECT a FROM Actividades a where a.cupos>0")
     List<Actividades> findActivities();
     @Query(value = "SELECT a FROM Actividades a WHERE a.actividadesKey.centrosDeportivos.mail=?1 AND a.actividadesKey.nombre=?2")
-    List<Actividades> findDistinctByActividadesKey(String mail,String nombre);
+    List<Actividades> findActividadesByKey(String mail,String nombre);
 
 
 

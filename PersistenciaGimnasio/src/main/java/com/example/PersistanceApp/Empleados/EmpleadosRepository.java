@@ -20,4 +20,7 @@ public interface EmpleadosRepository extends JpaRepository<Empleados,String> {
     @Query("SELECT e FROM Empleados e WHERE e.empresas.mail=?1 ")
     List<Empleados> findEmpleadoByEmpresa(String mailEmpresa);
 
+    @Query("SELECT e FROM Empleados e WHERE e.pasaporte = ?1")
+    List<Empleados> findEmpleadoByPasaport(String pasaporte);
+
 }

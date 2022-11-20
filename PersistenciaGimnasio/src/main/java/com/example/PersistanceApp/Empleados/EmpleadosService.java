@@ -30,12 +30,14 @@ public class EmpleadosService {
         this.usuariosService= usuariosService;
     }
 
-    public List<Empleados> getEmpleado(String mail){
-        return empleadosRepository.findEmpleadoByMail(mail);}
+    public List<Empleados> getEmpleado(String mail){return empleadosRepository.findEmpleadoByMail(mail);}
     public List<Empleados> getEmpleado(){return empleadosRepository.findAll(); //devuelve lista
     }
 
     public List<Empleados> getEmpleadoPorEmpresa(String mailEmpresa){return empleadosRepository.findEmpleadoByEmpresa(mailEmpresa); //devuelve lista
+    }
+
+    public List<Empleados> getEmpleadoPorPasaporte(String pasaporte){return empleadosRepository.findEmpleadoByPasaport(pasaporte); //devuelve lista
     }
 
     public void addNewEmpleado(Empleados empleados) {
