@@ -46,6 +46,8 @@ public class ActividadesService {
     public List<Actividades> getActividadesNombre(String nombre){return actividadesRepository.findActividadesByNombre(nombre);}
 
     @Transactional
+    public List<Actividades> getActividadesCupos(){return actividadesRepository.findActivities();}
+    @Transactional
     public void addNewActividades(Actividades actividades) {
         String horario_inicio= actividades.getHorarios().get(0).getHorario_inicio();
         System.out.println(horario_inicio);
@@ -91,5 +93,6 @@ public class ActividadesService {
         }
         actividadesRepository.deleteById(String.valueOf(actividadesKey));
     }
+
 
 }

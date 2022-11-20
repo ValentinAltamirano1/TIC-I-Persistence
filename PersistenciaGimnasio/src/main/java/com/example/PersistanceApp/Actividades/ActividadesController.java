@@ -24,6 +24,9 @@ public class ActividadesController {
         return actividadesService.getActividades();
     }
 
+    @GetMapping("/cupos")
+    public List<Actividades> getActividadesCupos(){return actividadesService.getActividadesCupos();}
+
     @GetMapping("/categ/{categoria}")
     public List<Actividades> getActividadesCancha(@PathVariable("categoria") String categoria){
         return actividadesService.getActividadesCateg(categoria);
