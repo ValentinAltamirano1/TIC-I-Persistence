@@ -41,11 +41,8 @@ public class ReservasService {
     public void addNewReserva(Reservas reserva) {
         Optional<Reservas> reservasByKey = reservasRepository.findReservasByKey(reserva.getReservasKey());
         if(reservasByKey.isPresent()){
-            try {
-                throw new IllegalAccessException("ya tiene una reserva ingresada");
-            } catch (IllegalAccessException e) {
-
-            }
+            System.out.println("Ya existe una reserva en ese dia y horario");
+            return;
         }
         reservasRepository.save(reserva);
     }
