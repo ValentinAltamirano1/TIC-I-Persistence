@@ -42,6 +42,11 @@ public class ActividadesController {
         return actividadesService.getActividadesHorario(dia_semana,nombre,rut);
     }
 
+    @GetMapping("/centro/{mail}/{nombre}")
+    public List<Actividades> getActividadesMailNombre(@PathVariable("mail") String mail,@PathVariable("nombre") String nombre){
+        return actividadesService.getActividadMailNombre(mail, nombre);
+    }
+
     @GetMapping("/nombre/{nombre}")
     public List<Actividades> getActividadesNombres(@PathVariable("nombre") String nombre){
         return actividadesService.getActividadesNombre(nombre);

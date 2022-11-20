@@ -8,13 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.sql.Time;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,7 +38,8 @@ public class ActividadesService {
 
     @Transactional
     public List<Actividades> getActividadesNombre(String nombre){return actividadesRepository.findActividadesByNombre(nombre);}
-
+    @Transactional
+    public List<Actividades> getActividadMailNombre(String mail, String nombre){return actividadesRepository.findDistinctByActividadesKey(mail,nombre);}
     @Transactional
     public List<Actividades> getActividadesCupos(){return actividadesRepository.findActivities();}
     @Transactional
