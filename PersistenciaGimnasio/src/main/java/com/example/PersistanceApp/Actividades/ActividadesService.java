@@ -5,6 +5,8 @@ import com.example.PersistanceApp.Horario.HorarioKey;
 import org.hibernate.type.LocalTimeType;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -75,6 +77,10 @@ public class ActividadesService {
         }
         else{
             actividadesRepository.save(actividades);}
+    }
+
+    public void updateActividad(ActividadesKey actividadesKey){
+        actividadesRepository.updateActividadExistente(actividadesKey);
     }
 
     public ActividadesRepository getActividadesRepository() {

@@ -4,9 +4,13 @@ import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivos;
 import com.example.PersistanceApp.CentrosDeportivos.CentrosDeportivosService;
 import com.example.PersistanceApp.Horario.HorarioKey;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.PostUpdate;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -60,4 +64,10 @@ public class ActividadesController {
     public void deleteActividades(@PathVariable("actividadesKey") ActividadesKey actividadesKey  ){
         actividadesService.deleteActividad(actividadesKey);
     }
+
+    @PutMapping("/update/{actividadesKey}")
+    public void updateActividades(@PathVariable("actividadesKey")ActividadesKey actividadesKey){
+        actividadesService.updateActividad(actividadesKey);
+    }
+
 }
