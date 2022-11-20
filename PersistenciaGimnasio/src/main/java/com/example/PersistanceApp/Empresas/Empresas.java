@@ -17,7 +17,7 @@ public class Empresas {
     @Column(name = "nombre", nullable = false , columnDefinition = "TEXT")
     private String nombre;
 
-    @Column(name = "mail", nullable = false)
+    @Column(name = "mail", nullable = false , unique = true)
     private String mail;
 
     @Column(name = "contra", nullable = false)

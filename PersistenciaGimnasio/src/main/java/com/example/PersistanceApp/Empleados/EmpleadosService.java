@@ -35,6 +35,9 @@ public class EmpleadosService {
     public List<Empleados> getEmpleado(){return empleadosRepository.findAll(); //devuelve lista
     }
 
+    public List<Empleados> getEmpleadoPorEmpresa(String mailEmpresa){return empleadosRepository.findEmpleadoByEmpresa(mailEmpresa); //devuelve lista
+    }
+
     public void addNewEmpleado(Empleados empleados) {
         Optional<Empleados> empleadoByPasaporte = empleadosRepository.findEmpleadoByPasaporte(empleados.getPasaporte());
         Usuarios usuario = new Usuarios(empleados.getMail(),empleados.getContraseña(),empleados.getTipo());

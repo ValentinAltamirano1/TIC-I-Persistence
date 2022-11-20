@@ -19,7 +19,7 @@ public class Empleados {
     private String nombre;
     @Column(name = "telefono")
     private int telefono;
-    @Column(name = "mail")
+    @Column(name = "mail" , unique = true)
     private String mail;
 
     @Column(name = "contraseña")

@@ -6,9 +6,9 @@ import javax.persistence.*;
 @Table
 public class Usuarios {
     @Id
-    @Column(name = "mail", updatable = false)
+    @Column(name = "mail", updatable = false , unique = true)
     private String mail;
-    @Column(name = "contraseña", nullable = false , unique = true)
+    @Column(name = "contraseña", nullable = false)
     private String contraseña;
 
     @Column(name = "tipoUsuario", nullable = false )

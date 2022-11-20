@@ -26,6 +26,11 @@ public class EmpleadosController {
         return empleadosService.getEmpleado();
     }
 
+    @GetMapping("/mailEmpresa/{mail}")
+    public List<Empleados> getEmpleadoPorEmpresas(@PathVariable("mail") String mailEmpresa){
+        return empleadosService.getEmpleadoPorEmpresa(mailEmpresa);
+    }
+
     @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public void registrarNuevoEmpleado(@RequestBody Empleados empleados){
         empleadosService.addNewEmpleado(empleados);
