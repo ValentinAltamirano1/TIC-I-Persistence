@@ -42,7 +42,7 @@ public class EmpleadosService {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate fechaV = LocalDate.parse(vencimiento_ficha, formatter);
-        System.out.println(fechaV);
+
         if (fechaV.isBefore(java.time.LocalDate.now())){
             return;
           }

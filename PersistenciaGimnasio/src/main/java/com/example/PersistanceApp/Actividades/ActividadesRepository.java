@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface ActividadesRepository extends JpaRepository<Actividades, String> {
     @Query(value = "SELECT h FROM Actividades a  INNER JOIN a.horarios h WHERE a.actividadesKey.centrosDeportivos.rut= ?1 AND a.actividadesKey.nombre=?2 AND a.capacidad=?3 AND a.cupos=?4 AND a.categoria=?5 And a.descripcion=?6  AND a.precio=?7")
-    List<HorarioKey> findActivitiesByHorarios(Long rut, String nombre, int capacidad, int cupos, String categoria, String descripcion,int Precio);
+    List<HorarioKey> findActivitiesByHorarios(Long rut, String nombre, int capacidad, int cupos, String categoria, String descripcion,int precio);
 
     @Query(value = "SELECT a FROM Actividades a  WHERE a.actividadesKey= ?1")
     Optional<Actividades> findActividadesByActividadesKey(ActividadesKey actividadesKey);

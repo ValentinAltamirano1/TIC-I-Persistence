@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -23,7 +25,17 @@ public class ReservasService {
     @Transactional
     public List<Actividades> getActividadesCentro(Long rut){return reservasRepository.findActivitiesByRut(rut);}
     @Transactional
-    public List<Reservas> getReservasMail(String mail){return reservasRepository.findReservasByMail(mail);}
+    public List<Reservas> getReservasMail(String mail){
+        List<Reservas> reservas=reservasRepository.findReservasByMail(mail);
+        for(int i=0;i< reservas.size();i++){
+            String fecha=reservas.get(i).getReservasKey().getFecha();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate fechaR = LocalDate.parse(fecha, formatter);
+            if (!fechaR.isEqual(java.time.LocalDate.now())){
+                reservas.remove(i);
+            }
+        }
+        return reservas;}
 
     public void addNewReserva(Reservas reserva) {
         /*Optional<Actividades> actividadesByKey = actividadesRepository.findActividadesByKey(actividades.getActividadesKey());
