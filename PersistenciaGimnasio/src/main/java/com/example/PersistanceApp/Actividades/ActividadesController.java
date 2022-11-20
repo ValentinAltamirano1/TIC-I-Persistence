@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.PostUpdate;
+import javax.persistence.PreUpdate;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -64,6 +65,7 @@ public class ActividadesController {
     public void deleteActividades(@PathVariable("actividadesKey") ActividadesKey actividadesKey  ){
         actividadesService.deleteActividad(actividadesKey);
     }
+
 
     @PutMapping("/update/{actividadesKey}")
     public void updateActividades(@PathVariable("actividadesKey")ActividadesKey actividadesKey){

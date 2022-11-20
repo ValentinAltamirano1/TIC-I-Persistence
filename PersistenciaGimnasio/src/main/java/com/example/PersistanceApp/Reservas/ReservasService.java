@@ -42,7 +42,7 @@ public class ReservasService {
         Optional<Reservas> reservasByKey = reservasRepository.findReservasByKey(reserva.getReservasKey());
         if(reservasByKey.isPresent()){
             try {
-                throw new IllegalAccessException("Actividad ya ingresada");
+                throw new IllegalAccessException("ya tiene una reserva ingresada");
             } catch (IllegalAccessException e) {
 
             }

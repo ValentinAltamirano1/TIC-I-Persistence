@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ReservasRepository extends JpaRepository<Reservas, Actividades> {
@@ -21,6 +22,8 @@ public interface ReservasRepository extends JpaRepository<Reservas, Actividades>
     @Query(value = "SELECT r FROM Reservas r inner join r.actividades a where a.actividadesKey.centrosDeportivos.mail=?1 AND r.asistio=FALSE ")
     List<Reservas> findReservasByMail(String mail);// reservas con condicion de asistio = false
 
+    @Query(value = "SELECT r FROM Reservas r where r.reservasKey=?1")
+    Optional<Reservas> findReservasByKey (ReservasKey reservasKey);
 
 
 }
