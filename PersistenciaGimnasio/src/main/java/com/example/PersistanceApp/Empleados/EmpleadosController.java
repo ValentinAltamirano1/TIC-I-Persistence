@@ -19,7 +19,6 @@ public class EmpleadosController {
         this.empleadosService = empleadosService;}
     @GetMapping("/{mail}")
     public List<Empleados> getEmpleado(@PathVariable("mail") String mail){
-
         return empleadosService.getEmpleado(mail);
     }
     @GetMapping
