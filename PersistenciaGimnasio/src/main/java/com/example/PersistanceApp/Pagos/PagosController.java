@@ -25,4 +25,5 @@ public class PagosController {
     public void registrarNuevoPago(){
         pagosService.addNewPago();
     }
+
 }

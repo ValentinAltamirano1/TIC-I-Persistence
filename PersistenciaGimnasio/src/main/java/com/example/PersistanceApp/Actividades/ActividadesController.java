@@ -37,7 +37,7 @@ public class ActividadesController {
         return actividadesService.getActividadesCateg(categoria);
     }
 
-    @GetMapping("/{mail}")
+    @GetMapping("/mail/{mail}")
     public List<Actividades> getActividadesCentroMail(@PathVariable("mail") String mail){
         return actividadesService.getActividadesCentro(mail);
     }
