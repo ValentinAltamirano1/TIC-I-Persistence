@@ -20,7 +20,7 @@ public interface ActividadesRepository extends JpaRepository<Actividades, String
     @Query(value = "SELECT a FROM Actividades a  WHERE a.actividadesKey= ?1")
     Optional<Actividades> findActividadesByActividadesKey(ActividadesKey actividadesKey);
 
-    @Query(value= "SELECT a FROM Actividades a INNER JOIN a.actividadesKey.centrosDeportivos c WHERE c.mail=?1")
+    @Query(value= "SELECT a FROM Actividades a  WHERE a.actividadesKey.centrosDeportivos.mail=?1")
     List<Actividades> findActividadesByCentro (String mail);
 
     @Query(value = "SELECT d FROM Actividades d WHERE d.categoria = ?1 AND d.cupos>0")

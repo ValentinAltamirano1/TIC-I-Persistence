@@ -70,5 +70,4 @@ public class EmpleadosService {
         empleadosRepository.deleteById(pasaporte);
     }
 
-
 }
