@@ -17,11 +17,13 @@ public class PagosService {
     private ReservasRepository reservasRepository;
 
     @Autowired
-    public PagosService(PagosRepository pagosRepository) {
+    public PagosService(PagosRepository pagosRepository, ReservasRepository reservasRepository) {
         this.pagosRepository = pagosRepository;
+        this.reservasRepository = reservasRepository;
     }
     public List<Pagos> getPagos(){return pagosRepository.findAll(); //devuelve lista
     }
+
     public void addNewPago() {
         List<Reservas> reservas = reservasRepository.findReservaByMail();
         for (int i=0;i<reservas.size();i++){
@@ -29,10 +31,11 @@ public class PagosService {
                 //seteo el valor
                 Pagos pago = pagosRepository.findCentroByRut(reservas.get(i).getActividades().getActividadesKey().getCentrosDeportivos().getRut(), reservas.get(i).getReservasKey().getEmpleados().getEmpresas().getRut()).get();
                 pago.setGasto(pago.getGasto() + reservas.get(i).getActividades().getPrecio());
+            }else {
+                PagosKey pagosKey = new PagosKey(reservas.get(i).getReservasKey().getEmpleados().getEmpresas(), reservas.get(i).getActividades().getActividadesKey().getCentrosDeportivos());
+                Pagos pagos1 = new Pagos(reservas.get(i).getActividades().getPrecio(), pagosKey);
+                pagosRepository.save(pagos1);
             }
-            PagosKey pagosKey = new PagosKey(reservas.get(i).getReservasKey().getEmpleados().getEmpresas(),reservas.get(i).getActividades().getActividadesKey().getCentrosDeportivos());
-            Pagos pagos1 = new Pagos(reservas.get(i).getActividades().getPrecio(),pagosKey);
-            pagosRepository.save(pagos1);
         }
     }
 }
