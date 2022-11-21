@@ -22,7 +22,7 @@ public class PagosController {
     }
 
     @PostMapping(consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public void registrarNuevoPago(@RequestBody Pagos pagos){
-        pagosService.addNewPago(pagos);
+    public void registrarNuevoPago(){
+        pagosService.addNewPago();
     }
 }

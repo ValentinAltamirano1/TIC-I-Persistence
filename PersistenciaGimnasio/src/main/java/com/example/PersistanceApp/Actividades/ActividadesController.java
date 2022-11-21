@@ -61,15 +61,17 @@ public class ActividadesController {
     public void registrarNuevaActividad(@RequestBody Actividades actividades){
         actividadesService.addNewActividades(actividades);
     }
+
+    @PostMapping(path = "/update",consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    public void updateActividades(@RequestBody Actividades actividades){
+        actividadesService.updateActividad(actividades);
+    }
+
     @DeleteMapping(path = "{actividadesKey}") //se eliminan asi cuando una depende del otro??
     public void deleteActividades(@PathVariable("actividadesKey") ActividadesKey actividadesKey  ){
         actividadesService.deleteActividad(actividadesKey);
     }
 
 
-    @PutMapping("/update/{actividadesKey}")
-    public void updateActividades(@PathVariable("actividadesKey")ActividadesKey actividadesKey){
-        actividadesService.updateActividad(actividadesKey);
-    }
 
 }

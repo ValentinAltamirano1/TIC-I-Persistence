@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,15 +29,16 @@ public class ReservasService {
     @Transactional
     public List<Reservas> getReservasMail(String mail){
         List<Reservas> reservas=reservasRepository.findReservasByMail(mail);
+        List<Reservas> reservasAEnviar = new ArrayList<>();
         for(int i=0;i< reservas.size();i++){
             String fecha=reservas.get(i).getReservasKey().getFecha();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             LocalDate fechaR = LocalDate.parse(fecha, formatter);
-            if (!fechaR.isEqual(java.time.LocalDate.now())){
-                reservas.remove(i);
+            if (fechaR.isEqual(java.time.LocalDate.now())){
+                reservasAEnviar.add(reservas.get(i));
             }
         }
-        return reservas;}
+        return reservasAEnviar;}
 
     public void addNewReserva(Reservas reserva) {
         Optional<Reservas> reservasByKey = reservasRepository.findReservasByKey(reserva.getReservasKey());
@@ -45,6 +47,11 @@ public class ReservasService {
             return;
         }
         reservasRepository.save(reserva);
+    }
+
+    @Transactional
+    public void updateReserva(Reservas reservas){
+        reservasRepository.updateReservaExistente(reservas.getReservasKey());
     }
 
     /*

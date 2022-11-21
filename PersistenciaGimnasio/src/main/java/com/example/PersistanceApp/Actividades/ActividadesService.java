@@ -80,8 +80,8 @@ public class ActividadesService {
     }
 
     @Transactional
-    public void updateActividad(ActividadesKey actividadesKey){
-        actividadesRepository.updateActividadExistente(actividadesKey);
+    public void updateActividad(Actividades actividades){
+        actividadesRepository.updateActividadExistente(actividades.getActividadesKey());
     }
 
     public ActividadesRepository getActividadesRepository() {

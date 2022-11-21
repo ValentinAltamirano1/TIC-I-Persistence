@@ -43,6 +43,10 @@ public class ReservasController {
     public void registrarNuevaReserva(@RequestBody Reservas reserva){
         reservasService.addNewReserva(reserva);
     }
+    @PostMapping(path = "/update",consumes = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    public void updateReservas(@RequestBody Reservas reservas){
+        reservasService.updateReserva(reservas);
+    }
 
    /* @DeleteMapping(path = "{reservasKey}")
     public void deleteReservas(@PathVariable("reservasKey") ReservasKey reservasKey){

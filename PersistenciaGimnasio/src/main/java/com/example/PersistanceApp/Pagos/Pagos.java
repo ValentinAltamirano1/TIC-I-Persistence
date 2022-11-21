@@ -13,7 +13,7 @@ public class Pagos {
     private long gasto;
 
     @EmbeddedId
-    PagosKey pagosKey;
+    private PagosKey pagosKey;
 
 
     public long getGasto() {

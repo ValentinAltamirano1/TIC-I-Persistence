@@ -37,7 +37,7 @@ public interface ActividadesRepository extends JpaRepository<Actividades, String
     List<Actividades> findActividadesByKey(String mail,String nombre);
 
     @Transactional
-    @Modifying(clearAutomatically = true,flushAutomatically = true)
+    @Modifying()
     @Query(value = "update Actividades a set a.cupos=a.cupos-1 where a.actividadesKey=?1")
     void updateActividadExistente(ActividadesKey actividadesKey);
 
