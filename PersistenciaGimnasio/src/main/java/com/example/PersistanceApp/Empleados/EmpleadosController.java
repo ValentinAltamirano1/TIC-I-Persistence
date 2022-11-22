@@ -41,7 +41,7 @@ public class EmpleadosController {
         empleadosService.addNewEmpleado(empleados);
     }
 
-    @DeleteMapping(path = "{pasaporte}")
+    @DeleteMapping(path = "/{pasaporte}")
     public void deleteEmpleados(@PathVariable("pasaporte") String pasaporte){
         empleadosService.deleteEmpleado(pasaporte);
     }

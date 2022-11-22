@@ -2,6 +2,8 @@ package com.example.PersistanceApp.Empleados;
 
 
 import com.example.PersistanceApp.Empresas.Empresas;
+import com.example.PersistanceApp.Reservas.ReservasRepository;
+import com.example.PersistanceApp.Reservas.ReservasService;
 import com.example.PersistanceApp.Usuario.Usuarios;
 import com.example.PersistanceApp.Usuario.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,7 @@ public class EmpleadosService {
 
     private EmpleadosRepository empleadosRepository;
     private UsuariosService usuariosService;
+
 
     @Autowired
     public EmpleadosService (EmpleadosRepository empleadosRepository, UsuariosService usuariosService) {
@@ -68,6 +71,9 @@ public class EmpleadosService {
             throw new IllegalStateException("empleado con pasaporte"+ pasaporte + "no existe");
         }
         empleadosRepository.deleteById(pasaporte);
+
+
+
     }
 
 }
