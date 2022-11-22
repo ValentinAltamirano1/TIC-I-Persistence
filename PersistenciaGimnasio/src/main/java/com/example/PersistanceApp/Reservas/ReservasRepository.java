@@ -31,6 +31,7 @@ public interface ReservasRepository extends JpaRepository<Reservas, Actividades>
     @Query(value = "SELECT r FROM Reservas r where r.reservasKey=?1")
     Optional<Reservas> findReservasByKey (ReservasKey reservasKey);
 
+
     @Transactional
     @Modifying()
     @Query(value = "update Reservas r set r.asistio=TRUE where r.reservasKey=?1")

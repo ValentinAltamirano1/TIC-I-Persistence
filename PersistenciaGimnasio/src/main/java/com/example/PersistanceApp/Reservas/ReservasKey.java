@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Embeddable
-public class ReservasKey  implements Serializable { //se extendio actividades para que se pueda implementar el eliminar
+public class ReservasKey  implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "empleados_pasaporte")
