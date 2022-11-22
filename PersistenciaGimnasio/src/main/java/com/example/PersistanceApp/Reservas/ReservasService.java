@@ -1,6 +1,7 @@
 package com.example.PersistanceApp.Reservas;
 
 import com.example.PersistanceApp.Actividades.Actividades;
+import com.example.PersistanceApp.Empleados.Empleados;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,12 +41,18 @@ public class ReservasService {
         }
         return reservasAEnviar;}
 
+    @Transactional
     public void addNewReserva(Reservas reserva) {
         Optional<Reservas> reservasByKey = reservasRepository.findReservasByKey(reserva.getReservasKey());
         if(reservasByKey.isPresent()){
             System.out.println("Ya existe una reserva en ese dia y horario");
             return;
         }
+        Empleados empleados = reserva.getReservasKey().getEmpleados();
+        int saldoAntiguo = empleados.getSaldo();
+        int saldoARestar = reserva.getActividades().getPrecio();
+        int saldoNuevo=saldoAntiguo-saldoARestar;
+        empleados.setSaldo(saldoNuevo);
         reservasRepository.save(reserva);
     }
 
